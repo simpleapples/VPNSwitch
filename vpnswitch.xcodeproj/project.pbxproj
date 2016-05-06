@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A6707FB1CD9D46300F468E3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6707FA1CD9D46300F468E3 /* SettingViewController.swift */; };
 		5A9F3F611CCF4F2E00F7E9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9F3F601CCF4F2E00F7E9AF /* AppDelegate.swift */; };
 		5A9F3F661CCF4F2E00F7E9AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A9F3F641CCF4F2E00F7E9AF /* Main.storyboard */; };
 		5A9F3F6B1CCF4F2E00F7E9AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9F3F6A1CCF4F2E00F7E9AF /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		0ABD9636630FEACAE46B6A22 /* Pods-vpnswitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vpnswitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-vpnswitch/Pods-vpnswitch.release.xcconfig"; sourceTree = "<group>"; };
 		4F22E01C356E35D1BD043A73 /* Pods_vpnswitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vpnswitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A6707FA1CD9D46300F468E3 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5A9F3F5D1CCF4F2E00F7E9AF /* vpnswitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vpnswitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9F3F601CCF4F2E00F7E9AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A9F3F651CCF4F2E00F7E9AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				5AAFC5E81CCF7E410093AEDA /* EditVPNViewController.swift */,
 				5A9F3F7F1CCF580B00F7E9AF /* VPNListViewController.swift */,
+				5A6707FA1CD9D46300F468E3 /* SettingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				5AAFC5E91CCF7E410093AEDA /* EditVPNViewController.swift in Sources */,
 				5A9F3F7E1CCF57FC00F7E9AF /* VPNCell.swift in Sources */,
 				5AAFC5EF1CD352AC0093AEDA /* StorageManager.swift in Sources */,
+				5A6707FB1CD9D46300F468E3 /* SettingViewController.swift in Sources */,
 				5A9F3F611CCF4F2E00F7E9AF /* AppDelegate.swift in Sources */,
 				5AAFC5F81CD48A5A0093AEDA /* KeychainServices.swift in Sources */,
 				5A9F3F841CCF623B00F7E9AF /* VPNStatusCell.swift in Sources */,
@@ -401,7 +405,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = vpnswitch/vpnswitch.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = vpnswitch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -415,7 +421,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = vpnswitch/vpnswitch.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = vpnswitch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";

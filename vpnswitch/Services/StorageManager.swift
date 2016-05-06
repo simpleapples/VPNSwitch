@@ -63,6 +63,12 @@ class StorageManager {
         try! realm.commitWrite()
     }
     
+    var activedVPN: VPNAccount? {
+        get {
+            return realm.objects(VPNAccount).filter("isActived = true").first
+        }
+    }
+    
     private func vpnAccount(uuid: String) -> VPNAccount? {
         return realm.objects(VPNAccount).filter("uuid = %@", uuid).first
     }

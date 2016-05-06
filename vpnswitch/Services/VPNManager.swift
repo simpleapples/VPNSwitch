@@ -9,75 +9,78 @@
 import Foundation
 import NetworkExtension
 
-enum VPNStatus {
-    case NotConnected
-    case Connecting
-    case Connected
-}
 
 class VPNManager {
     
-    let VPNStatusChanged: String = "VPNStatusChanged"
-    private var _status: VPNStatus = .NotConnected
-    var status: VPNStatus {
-        get {
-            return _status
-        }
-        set {
-            _status = newValue
-            NSNotificationCenter.defaultCenter().postNotificationName(VPNStatusChanged, object: nil)
-        }
-    }
-    
+    static let VPNStatusChange = "VPNStatusChange"
     static let sharedManager = VPNManager()
     private init() {
-
+        NEVPNManager.sharedManager().loadFromPreferencesWithCompletionHandler { (error: NSError?) in
+            
+        }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(forwardNotification), name: NEVPNStatusDidChangeNotification, object: nil)
     }
     
-    func crateVPNConfiguration(vpnAccount: VPNAccount) {
-        let ipSecProtocol = NEVPNProtocolIPSec()
-        ipSecProtocol.authenticationMethod = .SharedSecret
-        ipSecProtocol.serverAddress = vpnAccount.server
-        ipSecProtocol.username = vpnAccount.account
-        ipSecProtocol.passwordReference = Keychain.passwordData(vpnAccount.uuid)
-        ipSecProtocol.sharedSecretReference = Keychain.secretKeyData(vpnAccount.uuid)
-        ipSecProtocol.disconnectOnSleep = !vpnAccount.isAlwaysOnline
+    var status: NEVPNStatus {
+        get {
+            return NEVPNManager.sharedManager().connection.status
+        }
+    }
+    
+    @objc private func forwardNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(VPNManager.VPNStatusChange, object: nil)
+    }
+    
+    func setupVPNConfiguration(vpnAccount: VPNAccount) {
+        var vpnProtocol = NEVPNProtocol()
         
+        let ipSecProtocol = NEVPNProtocolIPSec()
         ipSecProtocol.useExtendedAuthentication = true
         ipSecProtocol.localIdentifier = vpnAccount.group
-        ipSecProtocol.remoteIdentifier = vpnAccount.group
+        if let secretKeyRef = vpnAccount.secretKeyRef {
+            ipSecProtocol.authenticationMethod = .SharedSecret
+            ipSecProtocol.sharedSecretReference = secretKeyRef
+        } else {
+            ipSecProtocol.authenticationMethod = .None
+        }
+        vpnProtocol = ipSecProtocol
         
-        NEVPNManager.sharedManager().protocolConfiguration = ipSecProtocol
-        NEVPNManager.sharedManager().onDemandEnabled = true
+        vpnProtocol.disconnectOnSleep = !vpnAccount.isAlwaysOnline
+        vpnProtocol.serverAddress = vpnAccount.server
+        if !vpnAccount.account.isEmpty {
+            vpnProtocol.username = vpnAccount.account
+        }
+        if let passwordRef = vpnAccount.passwordRef {
+            vpnProtocol.passwordReference = passwordRef
+        }
+        
         NEVPNManager.sharedManager().localizedDescription = vpnAccount.name
+        NEVPNManager.sharedManager().enabled = true
+        NEVPNManager.sharedManager().protocolConfiguration = vpnProtocol
+        
+        NEVPNManager.sharedManager().onDemandRules = [NEOnDemandRule]()
+        NEVPNManager.sharedManager().onDemandEnabled = false
+        
+        NEVPNManager.sharedManager().saveToPreferencesWithCompletionHandler(nil)
     }
     
     func deleteVPNConfigurations() {
-        NEVPNManager.sharedManager().loadFromPreferencesWithCompletionHandler { (error: NSError?) in
-            NEVPNManager.sharedManager().removeFromPreferencesWithCompletionHandler(nil)
-        }
+        NEVPNManager.sharedManager().removeFromPreferencesWithCompletionHandler(nil)
     }
     
     func startVPNTunnel() {
-        NEVPNManager.sharedManager().loadFromPreferencesWithCompletionHandler { (error: NSError?) in
-            if error == nil {
-                do {
-                    try NEVPNManager.sharedManager().connection.startVPNTunnel()
-                    self.status = .Connected
-                } catch {
-                    self.status = .NotConnected
-                }
-            }
+        do {
+            try NEVPNManager.sharedManager().connection.startVPNTunnel()
+        } catch {
         }
     }
     
     func stopVPNTunnel() {
-        NEVPNManager.sharedManager().loadFromPreferencesWithCompletionHandler { (error: NSError?) in
-            if error == nil {
-                NEVPNManager.sharedManager().connection.stopVPNTunnel()
-                self.status = .NotConnected
-            }
-        }
+        NEVPNManager.sharedManager().connection.stopVPNTunnel()
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 }

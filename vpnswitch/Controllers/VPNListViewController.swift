@@ -63,6 +63,7 @@ class VPNListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(VPNStatusCellIdentifier, forIndexPath: indexPath) as! VPNStatusCell
+            cell.config()
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier(VPNCellIdentifier, forIndexPath: indexPath) as! VPNCell
