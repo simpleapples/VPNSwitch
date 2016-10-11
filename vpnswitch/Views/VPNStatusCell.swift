@@ -18,11 +18,11 @@ class VPNStatusCell: UITableViewCell {
     }
 
     override func prepareForReuse() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateVPNStatus), name: VPNManager.VPNStatusChange, object: nil)
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateVPNStatus), name: NSNotification.Name(rawValue: VPNManager.VPNStatusChange), object: nil)
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
@@ -30,36 +30,36 @@ class VPNStatusCell: UITableViewCell {
         updateVPNStatus()
     }
     
-    @objc private func updateVPNStatus() {
+    @objc fileprivate func updateVPNStatus() {
         switch VPNManager.sharedManager.status {
-        case .Disconnected, .Invalid:
+        case .disconnected, .invalid:
             vpnStatusLabel.text = "未连接"
-            vpnSwitch.on = false
-        case .Connecting:
+            vpnSwitch.isOn = false
+        case .connecting:
             vpnStatusLabel.text = "正在连接..."
-            vpnSwitch.on = true
-        case .Disconnecting:
+            vpnSwitch.isOn = true
+        case .disconnecting:
             vpnStatusLabel.text = "正在断开..."
-            vpnSwitch.on = true
-        case .Reasserting:
+            vpnSwitch.isOn = true
+        case .reasserting:
             vpnStatusLabel.text = "正在重连..."
-            vpnSwitch.on = true
-        case .Connected:
+            vpnSwitch.isOn = true
+        case .connected:
             vpnStatusLabel.text = "已连接"
-            vpnSwitch.on = true
+            vpnSwitch.isOn = true
         }
     }
 
-    @IBAction func switchButtonValueChanged(sender: AnyObject) {
+    @IBAction func switchButtonValueChanged(_ sender: AnyObject) {
         let switcher = sender as! UISwitch
         let status = VPNManager.sharedManager.status
-        if switcher.on == true && (status == .Disconnected || status == .Invalid) {
+        if switcher.isOn == true && (status == .disconnected || status == .invalid) {
             if let activedVPN = StorageManager.sharedManager.activedVPN {
                 VPNManager.sharedManager.setupVPNConfiguration(activedVPN)
                 VPNManager.sharedManager.startVPNTunnel()
             }
         }
-        if switcher.on == false && (status != .Disconnected && status != .Invalid) {
+        if switcher.isOn == false && (status != .disconnected && status != .invalid) {
             VPNManager.sharedManager.stopVPNTunnel()
         }
         updateVPNStatus()

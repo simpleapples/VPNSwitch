@@ -11,44 +11,36 @@ import SwiftKeychainWrapper
 
 class Keychain {
     
-    static let ServiceName = "com.zangzhiya.vpnswitch"
-    
-    static func savePassword(password: String, uuid: String) -> Bool {
+    static func savePassword(_ password: String, uuid: String) -> Bool {
         let key = uuid + "-password"
-        KeychainWrapper.serviceName = ServiceName
-        KeychainWrapper.removeObjectForKey(key)
-        return KeychainWrapper.setString(password, forKey: key)
+        KeychainWrapper.standard.removeObject(forKey: key)
+        return KeychainWrapper.standard.set(password, forKey: key)
     }
     
-    static func saveSecretKey(secretKey: String, uuid: String) -> Bool {
+    static func saveSecretKey(_ secretKey: String, uuid: String) -> Bool {
         let key = uuid + "-secretKey"
-        KeychainWrapper.serviceName = ServiceName
-        KeychainWrapper.removeObjectForKey(key)
-        return KeychainWrapper.setString(secretKey, forKey: key)
+        KeychainWrapper.standard.removeObject(forKey: key)
+        return KeychainWrapper.standard.set(secretKey, forKey: key)
     }
     
-    static func passwordData(uuid: String) -> NSData? {
+    static func passwordDataReference(_ uuid: String) -> Data? {
         let key = uuid + "-password"
-        KeychainWrapper.serviceName = ServiceName
-        return KeychainWrapper.dataForKey(key)
+        return KeychainWrapper.standard.dataRef(forKey: key)
     }
     
-    static func secretKeyData(uuid: String) -> NSData? {
+    static func secretKeyDataReference(_ uuid: String) -> Data? {
         let key = uuid + "-secretKey"
-        KeychainWrapper.serviceName = ServiceName
-        return KeychainWrapper.dataForKey(key)
+        return KeychainWrapper.standard.dataRef(forKey: key)
     }
     
-    static func passwordString(uuid: String) -> String? {
+    static func passwordString(_ uuid: String) -> String? {
         let key = uuid + "-password"
-        KeychainWrapper.serviceName = ServiceName
-        return KeychainWrapper.stringForKey(key)
+        return KeychainWrapper.standard.string(forKey: key)
     }
     
-    static func secretKeyString(uuid: String) -> String? {
+    static func secretKeyString(_ uuid: String) -> String? {
         let key = uuid + "-secretKey"
-        KeychainWrapper.serviceName = ServiceName
-        return KeychainWrapper.stringForKey(key)
+        return KeychainWrapper.standard.string(forKey: key)
     }
     
 }

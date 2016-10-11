@@ -16,7 +16,7 @@ class VPNListViewController: UITableViewController {
     
     var allVPNs = StorageManager.sharedManager.allVPNAccounts
     var notificationToken: NotificationToken? = nil
-    var selectedIndexPath: NSIndexPath? = nil
+    var selectedIndexPath: IndexPath? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +27,11 @@ class VPNListViewController: UITableViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if selectedIndexPath != nil {
-            let vpnAccount = allVPNs[(selectedIndexPath?.row)!]
-            if segue.destinationViewController.isKindOfClass(EditVPNViewController) {
-                let editVPNViewController = segue.destinationViewController as! EditVPNViewController
+            let vpnAccount = allVPNs[((selectedIndexPath as NSIndexPath?)?.row)!]
+            if segue.destination.isKind(of: EditVPNViewController.self) {
+                let editVPNViewController = segue.destination as! EditVPNViewController
                 editVPNViewController.vpnAccount = vpnAccount
             }
         }
@@ -47,11 +47,11 @@ class VPNListViewController: UITableViewController {
 
     // MARK: - UITableViewDataSource
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else if section == 1 {
@@ -60,39 +60,39 @@ class VPNListViewController: UITableViewController {
         return 0
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(VPNStatusCellIdentifier, forIndexPath: indexPath) as! VPNStatusCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: VPNStatusCellIdentifier, for: indexPath) as! VPNStatusCell
             cell.config()
             return cell
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(VPNCellIdentifier, forIndexPath: indexPath) as! VPNCell
-            cell.config(allVPNs[indexPath.row])
+        } else if (indexPath as NSIndexPath).section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: VPNCellIdentifier, for: indexPath) as! VPNCell
+            cell.config(allVPNs[(indexPath as NSIndexPath).row])
             return cell
         }
         return UITableViewCell()
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).section == 0 {
             return 50
-        } else if indexPath.section == 1 {
+        } else if (indexPath as NSIndexPath).section == 1 {
             return 100
         }
         return 50
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vpnAccount = allVPNs[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vpnAccount = allVPNs[(indexPath as NSIndexPath).row]
         StorageManager.sharedManager.setActived(vpnAccount.uuid)
     }
     
-    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         selectedIndexPath = indexPath
-        performSegueWithIdentifier("VPNListToEditVPNSegue", sender: nil)
+        performSegue(withIdentifier: "VPNListToEditVPNSegue", sender: nil)
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0.01
         }
@@ -101,9 +101,9 @@ class VPNListViewController: UITableViewController {
     
     // MARK: - EventHandler
 
-    @IBAction func addVPNButtonTouchUp(sender: AnyObject) {
+    @IBAction func addVPNButtonTouchUp(_ sender: AnyObject) {
         selectedIndexPath = nil
-        performSegueWithIdentifier("VPNListToEditVPNSegue", sender: sender)
+        performSegue(withIdentifier: "VPNListToEditVPNSegue", sender: sender)
     }
     
 }

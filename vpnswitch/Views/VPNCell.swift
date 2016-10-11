@@ -18,17 +18,17 @@ class VPNCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func config(vpnAccount: VPNAccount) {
+    func config(_ vpnAccount: VPNAccount) {
         nameLabel.text = vpnAccount.name
         serverLabel.text = vpnAccount.server
         if vpnAccount.isActived {
             activeView.backgroundColor = UIColor(red: 144 / 255.0, green: 19 / 255.0, blue: 254 / 255.0, alpha: 1)
         } else {
-            activeView.backgroundColor = UIColor.whiteColor()
+            activeView.backgroundColor = UIColor.white
         }
     }
 

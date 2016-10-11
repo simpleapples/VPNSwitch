@@ -24,7 +24,7 @@ class EditVPNViewController: UITableViewController {
         updateInterface()
     }
     
-    private func updateInterface() {
+    fileprivate func updateInterface() {
         if let vpnAccount = vpnAccount {
             nameTextField.text = vpnAccount.name
             serverTextField.text = vpnAccount.server
@@ -41,7 +41,7 @@ class EditVPNViewController: UITableViewController {
 
     // MARK: - EventHandler
 
-    @IBAction func saveButtonTouchUp(sender: AnyObject) {
+    @IBAction func saveButtonTouchUp(_ sender: AnyObject) {
         let name = nameTextField.text
         let server = serverTextField.text
         let account = accountTextField.text
@@ -51,12 +51,12 @@ class EditVPNViewController: UITableViewController {
         let isAlwaysOnline = true
         
         if let vpnAccount = vpnAccount {
-            StorageManager.sharedManager.updateVPNAccount(vpnAccount.uuid, name: name!, server: server!, account: account!, password: password!, secretKey: secretKey!, group: group!, isAlwaysOnline: isAlwaysOnline)
+            _ = StorageManager.sharedManager.updateVPNAccount(vpnAccount.uuid, name: name!, server: server!, account: account!, password: password!, secretKey: secretKey!, group: group!, isAlwaysOnline: isAlwaysOnline)
         } else {
-            StorageManager.sharedManager.insertVPNAccount(name!, server: server!, account: account!, password: password!, secretKey: secretKey!, group: group!, isAlwaysOnline: isAlwaysOnline)
+            _ = StorageManager.sharedManager.insertVPNAccount(name!, server: server!, account: account!, password: password!, secretKey: secretKey!, group: group!, isAlwaysOnline: isAlwaysOnline)
         }
 
-        navigationController?.popViewControllerAnimated(true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
 }

@@ -16,7 +16,7 @@ class VPNAccount: Object {
     dynamic var account = ""
     dynamic var group = ""
     dynamic var isAlwaysOnline = false
-    dynamic var createdAt = NSDate()
+    dynamic var createdAt = Date()
     dynamic var isActived = false
     
     var password: String? {
@@ -28,7 +28,7 @@ class VPNAccount: Object {
         }
         set {
             if newValue != nil {
-                Keychain.savePassword(newValue!, uuid: uuid)
+                _ = Keychain.savePassword(newValue!, uuid: uuid)
             }
         }
     }
@@ -42,21 +42,21 @@ class VPNAccount: Object {
         }
         set {
             if newValue != nil {
-                Keychain.saveSecretKey(newValue!, uuid: uuid)
+                _ = Keychain.saveSecretKey(newValue!, uuid: uuid)
             }
         }
     }
-    var passwordRef: NSData? {
+    var passwordReference: Data? {
         get {
-            if let passwordRef = Keychain.passwordData(uuid) {
+            if let passwordRef = Keychain.passwordDataReference(uuid) {
                 return passwordRef
             }
             return nil
         }
     }
-    var secretKeyRef: NSData? {
+    var secretKeyReference: Data? {
         get {
-            if let secretKeyRef = Keychain.secretKeyData(uuid) {
+            if let secretKeyRef = Keychain.secretKeyDataReference(uuid) {
                 return secretKeyRef
             }
             return nil

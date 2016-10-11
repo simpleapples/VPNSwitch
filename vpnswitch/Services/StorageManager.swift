@@ -10,18 +10,18 @@ import RealmSwift
 
 class StorageManager {
 
-    private let realm: Realm
+    fileprivate let realm: Realm
     
     static let sharedManager = StorageManager()
-    private init() {
+    fileprivate init() {
         let config = Realm.Configuration()
-        config.fileURL!.URLByDeletingLastPathComponent?.URLByAppendingPathComponent("vpnswitch.realm")
+        config.fileURL!.deletingLastPathComponent().appendingPathComponent("vpnswitch.realm")
         self.realm = try! Realm(configuration: config)
     }
     
-    func insertVPNAccount(name: String, server: String, account: String, password: String, secretKey: String, group: String, isAlwaysOnline: Bool) -> VPNAccount? {
+    func insertVPNAccount(_ name: String, server: String, account: String, password: String, secretKey: String, group: String, isAlwaysOnline: Bool) -> VPNAccount? {
         let vpnAccount = VPNAccount()
-        vpnAccount.uuid = NSUUID().UUIDString
+        vpnAccount.uuid = UUID().uuidString
         vpnAccount.name = name
         vpnAccount.server = server
         vpnAccount.account = account
@@ -35,7 +35,7 @@ class StorageManager {
         return vpnAccount
     }
     
-    func updateVPNAccount(uuid: String, name: String, server: String, account: String, password: String, secretKey: String, group: String, isAlwaysOnline: Bool) -> VPNAccount? {
+    func updateVPNAccount(_ uuid: String, name: String, server: String, account: String, password: String, secretKey: String, group: String, isAlwaysOnline: Bool) -> VPNAccount? {
         if let vpnAccount = vpnAccount(uuid) {
             realm.beginWrite()
             vpnAccount.name = name
@@ -51,7 +51,7 @@ class StorageManager {
         return nil
     }
     
-    func setActived(uuid: String) {
+    func setActived(_ uuid: String) {
         realm.beginWrite()
         for vpnAccount in allVPNAccounts {
             if vpnAccount.uuid == uuid {
@@ -65,17 +65,17 @@ class StorageManager {
     
     var activedVPN: VPNAccount? {
         get {
-            return realm.objects(VPNAccount).filter("isActived = true").first
+            return realm.objects(VPNAccount.self).filter("isActived = true").first
         }
     }
     
-    private func vpnAccount(uuid: String) -> VPNAccount? {
-        return realm.objects(VPNAccount).filter("uuid = %@", uuid).first
+    fileprivate func vpnAccount(_ uuid: String) -> VPNAccount? {
+        return realm.objects(VPNAccount.self).filter("uuid = %@", uuid).first
     }
     
     var allVPNAccounts: Results<VPNAccount> {
         get {
-            return realm.objects(VPNAccount).sorted("createdAt", ascending: false)
+            return realm.objects(VPNAccount.self).sorted(byProperty: "createdAt", ascending: false)
         }
     }
     

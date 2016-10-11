@@ -14,34 +14,33 @@ class VPNManager {
     
     static let VPNStatusChange = "VPNStatusChange"
     static let sharedManager = VPNManager()
-    private init() {
-        NEVPNManager.sharedManager().loadFromPreferencesWithCompletionHandler { (error: NSError?) in
-            
+    fileprivate init() {
+        NEVPNManager.shared().loadFromPreferences { (error: Error?) in
+            NotificationCenter.default.addObserver(self, selector: #selector(self.forwardNotification), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(forwardNotification), name: NEVPNStatusDidChangeNotification, object: nil)
     }
     
     var status: NEVPNStatus {
         get {
-            return NEVPNManager.sharedManager().connection.status
+            return NEVPNManager.shared().connection.status
         }
     }
     
-    @objc private func forwardNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(VPNManager.VPNStatusChange, object: nil)
+    @objc fileprivate func forwardNotification() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: VPNManager.VPNStatusChange), object: nil)
     }
     
-    func setupVPNConfiguration(vpnAccount: VPNAccount) {
+    func setupVPNConfiguration(_ vpnAccount: VPNAccount) {
         var vpnProtocol = NEVPNProtocol()
         
         let ipSecProtocol = NEVPNProtocolIPSec()
         ipSecProtocol.useExtendedAuthentication = true
         ipSecProtocol.localIdentifier = vpnAccount.group
-        if let secretKeyRef = vpnAccount.secretKeyRef {
-            ipSecProtocol.authenticationMethod = .SharedSecret
-            ipSecProtocol.sharedSecretReference = secretKeyRef
+        if let secretKeyReference = vpnAccount.secretKeyReference {
+            ipSecProtocol.authenticationMethod = .sharedSecret
+            ipSecProtocol.sharedSecretReference = secretKeyReference
         } else {
-            ipSecProtocol.authenticationMethod = .None
+            ipSecProtocol.authenticationMethod = .none
         }
         vpnProtocol = ipSecProtocol
         
@@ -50,37 +49,38 @@ class VPNManager {
         if !vpnAccount.account.isEmpty {
             vpnProtocol.username = vpnAccount.account
         }
-        if let passwordRef = vpnAccount.passwordRef {
-            vpnProtocol.passwordReference = passwordRef
+        if let passwordReference = vpnAccount.passwordReference {
+            vpnProtocol.passwordReference = passwordReference
         }
         
-        NEVPNManager.sharedManager().localizedDescription = vpnAccount.name
-        NEVPNManager.sharedManager().enabled = true
-        NEVPNManager.sharedManager().protocolConfiguration = vpnProtocol
+        NEVPNManager.shared().localizedDescription = vpnAccount.name
+        NEVPNManager.shared().protocolConfiguration = vpnProtocol
         
-        NEVPNManager.sharedManager().onDemandRules = [NEOnDemandRule]()
-        NEVPNManager.sharedManager().onDemandEnabled = false
+        NEVPNManager.shared().onDemandRules = [NEOnDemandRule]()
+        NEVPNManager.shared().isOnDemandEnabled = false
         
-        NEVPNManager.sharedManager().saveToPreferencesWithCompletionHandler(nil)
+        NEVPNManager.shared().isEnabled = true
+        NEVPNManager.shared().saveToPreferences(completionHandler: nil)
     }
     
     func deleteVPNConfigurations() {
-        NEVPNManager.sharedManager().removeFromPreferencesWithCompletionHandler(nil)
+        NEVPNManager.shared().removeFromPreferences(completionHandler: nil)
     }
     
     func startVPNTunnel() {
         do {
-            try NEVPNManager.sharedManager().connection.startVPNTunnel()
-        } catch {
+            try NEVPNManager.shared().connection.startVPNTunnel()
+        } catch let error as NSError {
+            print(error)
         }
     }
     
     func stopVPNTunnel() {
-        NEVPNManager.sharedManager().connection.stopVPNTunnel()
+        NEVPNManager.shared().connection.stopVPNTunnel()
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
 }
