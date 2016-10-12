@@ -9,9 +9,9 @@
 import UIKit
 
 class VPNStatusCell: UITableViewCell {
-
-    @IBOutlet weak var vpnStatusLabel: UILabel!
-    @IBOutlet weak var vpnSwitch: UISwitch!
+    
+    @IBOutlet weak var switchButton: UISwitch!
+    @IBOutlet weak var statusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,20 +33,20 @@ class VPNStatusCell: UITableViewCell {
     @objc fileprivate func updateVPNStatus() {
         switch VPNManager.sharedManager.status {
         case .disconnected, .invalid:
-            vpnStatusLabel.text = "未连接"
-            vpnSwitch.isOn = false
+            statusLabel.text = "未连接"
+            switchButton.isOn = false
         case .connecting:
-            vpnStatusLabel.text = "正在连接..."
-            vpnSwitch.isOn = true
+            statusLabel.text = "正在连接..."
+            switchButton.isOn = true
         case .disconnecting:
-            vpnStatusLabel.text = "正在断开..."
-            vpnSwitch.isOn = true
+            statusLabel.text = "正在断开..."
+            switchButton.isOn = true
         case .reasserting:
-            vpnStatusLabel.text = "正在重连..."
-            vpnSwitch.isOn = true
+            statusLabel.text = "正在重连..."
+            switchButton.isOn = true
         case .connected:
-            vpnStatusLabel.text = "已连接"
-            vpnSwitch.isOn = true
+            statusLabel.text = "已连接"
+            switchButton.isOn = true
         }
     }
 

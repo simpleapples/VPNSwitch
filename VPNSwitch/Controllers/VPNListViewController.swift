@@ -92,11 +92,8 @@ class VPNListViewController: UITableViewController {
         performSegue(withIdentifier: "VPNListToEditVPNSegue", sender: nil)
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 0.01
-        }
-        return 5
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
     
     // MARK: - EventHandler
