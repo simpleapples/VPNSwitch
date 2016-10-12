@@ -1,7 +1,7 @@
 platform :ios, ’9.0’
 use_frameworks!
 
-target 'vpnswitch' do
+target 'VPNSwitch' do
 
 pod 'RealmSwift'
 pod 'SwiftKeychainWrapper'
