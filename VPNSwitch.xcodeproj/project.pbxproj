@@ -21,8 +21,36 @@
 		5A1D3B601DAE14F900DE2266 /* VPNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B571DAE14F900DE2266 /* VPNCell.swift */; };
 		5A1D3B611DAE14F900DE2266 /* VPNStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B581DAE14F900DE2266 /* VPNStatusCell.swift */; };
 		5A1D3B631DAE150D00DE2266 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B621DAE150D00DE2266 /* NetworkExtension.framework */; };
+		5A1D3B6B1DAE174800DE2266 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B6A1DAE174800DE2266 /* NotificationCenter.framework */; };
+		5A1D3B6E1DAE174800DE2266 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B6D1DAE174800DE2266 /* TodayViewController.swift */; };
+		5A1D3B711DAE174800DE2266 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A1D3B6F1DAE174800DE2266 /* MainInterface.storyboard */; };
+		5A1D3B751DAE174800DE2266 /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5A1D3B691DAE174800DE2266 /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD4644B7058CC43AE7EACC74 /* Pods_VPNSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A1D3B731DAE174800DE2266 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A1D3B2D1DAE142C00DE2266 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A1D3B681DAE174800DE2266;
+			remoteInfo = TodayExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5A1D3B791DAE174800DE2266 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5A1D3B751DAE174800DE2266 /* TodayExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4A0DDC78208BA15A99B87518 /* Pods-VPNSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNSwitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-VPNSwitch/Pods-VPNSwitch.release.xcconfig"; sourceTree = "<group>"; };
@@ -44,6 +72,11 @@
 		5A1D3B581DAE14F900DE2266 /* VPNStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNStatusCell.swift; sourceTree = "<group>"; };
 		5A1D3B621DAE150D00DE2266 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		5A1D3B641DAE150D00DE2266 /* VPNSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNSwitch.entitlements; sourceTree = "<group>"; };
+		5A1D3B691DAE174800DE2266 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A1D3B6A1DAE174800DE2266 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		5A1D3B6D1DAE174800DE2266 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		5A1D3B701DAE174800DE2266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		5A1D3B721DAE174800DE2266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -57,6 +90,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5A1D3B661DAE174800DE2266 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A1D3B6B1DAE174800DE2266 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +106,7 @@
 			children = (
 				5A1D3B621DAE150D00DE2266 /* NetworkExtension.framework */,
 				8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */,
+				5A1D3B6A1DAE174800DE2266 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -73,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				5A1D3B371DAE142C00DE2266 /* VPNSwitch */,
+				5A1D3B6C1DAE174800DE2266 /* TodayExtension */,
 				5A1D3B361DAE142C00DE2266 /* Products */,
 				96477DD3DD19A039A83E208C /* Pods */,
 				0D1CA7FDD178C4FEC62796C6 /* Frameworks */,
@@ -83,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				5A1D3B351DAE142C00DE2266 /* VPNSwitch.app */,
+				5A1D3B691DAE174800DE2266 /* TodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,6 +185,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		5A1D3B6C1DAE174800DE2266 /* TodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5A1D3B6D1DAE174800DE2266 /* TodayViewController.swift */,
+				5A1D3B6F1DAE174800DE2266 /* MainInterface.storyboard */,
+				5A1D3B721DAE174800DE2266 /* Info.plist */,
+			);
+			path = TodayExtension;
+			sourceTree = "<group>";
+		};
 		96477DD3DD19A039A83E208C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,15 +217,34 @@
 				5A1D3B331DAE142C00DE2266 /* Resources */,
 				2624962429912CEF2D130A20 /* [CP] Embed Pods Frameworks */,
 				9918C63FB6AEC4FA3BC8A136 /* [CP] Copy Pods Resources */,
+				5A1D3B791DAE174800DE2266 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5A1D3B741DAE174800DE2266 /* PBXTargetDependency */,
 			);
 			name = VPNSwitch;
 			productName = VPNSwitch;
 			productReference = 5A1D3B351DAE142C00DE2266 /* VPNSwitch.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5A1D3B681DAE174800DE2266 /* TodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A1D3B781DAE174800DE2266 /* Build configuration list for PBXNativeTarget "TodayExtension" */;
+			buildPhases = (
+				5A1D3B651DAE174800DE2266 /* Sources */,
+				5A1D3B661DAE174800DE2266 /* Frameworks */,
+				5A1D3B671DAE174800DE2266 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodayExtension;
+			productName = TodayExtension;
+			productReference = 5A1D3B691DAE174800DE2266 /* TodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -194,6 +267,11 @@
 							};
 						};
 					};
+					5A1D3B681DAE174800DE2266 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = LMJACF6T63;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 5A1D3B301DAE142C00DE2266 /* Build configuration list for PBXProject "VPNSwitch" */;
@@ -210,6 +288,7 @@
 			projectRoot = "";
 			targets = (
 				5A1D3B341DAE142C00DE2266 /* VPNSwitch */,
+				5A1D3B681DAE174800DE2266 /* TodayExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -222,6 +301,14 @@
 				5A1D3B431DAE142C00DE2266 /* LaunchScreen.storyboard in Resources */,
 				5A1D3B401DAE142C00DE2266 /* Assets.xcassets in Resources */,
 				5A1D3B3E1DAE142C00DE2266 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A1D3B671DAE174800DE2266 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A1D3B711DAE174800DE2266 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +380,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5A1D3B651DAE174800DE2266 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A1D3B6E1DAE174800DE2266 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5A1D3B741DAE174800DE2266 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A1D3B681DAE174800DE2266 /* TodayExtension */;
+			targetProxy = 5A1D3B731DAE174800DE2266 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5A1D3B3C1DAE142C00DE2266 /* Main.storyboard */ = {
@@ -310,6 +413,14 @@
 				5A1D3B421DAE142C00DE2266 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5A1D3B6F1DAE174800DE2266 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A1D3B701DAE174800DE2266 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -445,6 +556,32 @@
 			};
 			name = Release;
 		};
+		5A1D3B761DAE174800DE2266 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = LMJACF6T63;
+				INFOPLIST_FILE = TodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.todayextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5A1D3B771DAE174800DE2266 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = LMJACF6T63;
+				INFOPLIST_FILE = TodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.todayextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -465,6 +602,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		5A1D3B781DAE174800DE2266 /* Build configuration list for PBXNativeTarget "TodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A1D3B761DAE174800DE2266 /* Debug */,
+				5A1D3B771DAE174800DE2266 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
