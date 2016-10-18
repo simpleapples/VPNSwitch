@@ -69,6 +69,11 @@
                                                 <constraint firstAttribute="width" constant="6" id="1mq-q2-P5g"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-- ms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kC-Xm-Yon">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="ScX-js-MMP" firstAttribute="top" secondItem="Ih6-9e-lDr" secondAttribute="top" id="0mX-lZ-se9"/>
@@ -79,6 +84,8 @@
                                         <constraint firstItem="RED-J1-RCh" firstAttribute="leading" secondItem="Ih6-9e-lDr" secondAttribute="leading" constant="16" id="evR-6K-PEW"/>
                                         <constraint firstItem="RED-J1-RCh" firstAttribute="leading" secondItem="ScX-js-MMP" secondAttribute="trailing" constant="16" id="h3O-jQ-bMg"/>
                                         <constraint firstItem="RED-J1-RCh" firstAttribute="centerY" secondItem="Ih6-9e-lDr" secondAttribute="centerY" constant="-15" id="nLy-jO-5l5"/>
+                                        <constraint firstItem="1kC-Xm-Yon" firstAttribute="centerY" secondItem="Ih6-9e-lDr" secondAttribute="centerY" id="qD3-rj-5F8"/>
+                                        <constraint firstAttribute="trailing" secondItem="1kC-Xm-Yon" secondAttribute="trailing" constant="16" id="vXF-5s-8oa"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -90,6 +97,7 @@
                                 <color key="tintColor" red="0.56470588239999997" green="0.074509803920000006" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="activeView" destination="ScX-js-MMP" id="tPb-wG-XaM"/>
+                                    <outlet property="latencyLabel" destination="1kC-Xm-Yon" id="oTq-ks-94q"/>
                                     <outlet property="nameLabel" destination="RED-J1-RCh" id="lgK-DP-yww"/>
                                     <outlet property="serverLabel" destination="bA6-se-o1W" id="29U-rN-zmS"/>
                                 </connections>

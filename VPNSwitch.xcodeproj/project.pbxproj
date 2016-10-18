@@ -20,7 +20,6 @@
 		5A1D3B5F1DAE14F900DE2266 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B551DAE14F900DE2266 /* VPNManager.swift */; };
 		5A1D3B601DAE14F900DE2266 /* VPNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B571DAE14F900DE2266 /* VPNCell.swift */; };
 		5A1D3B611DAE14F900DE2266 /* VPNStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B581DAE14F900DE2266 /* VPNStatusCell.swift */; };
-		5A1D3B631DAE150D00DE2266 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B621DAE150D00DE2266 /* NetworkExtension.framework */; };
 		5A1D3B6B1DAE174800DE2266 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B6A1DAE174800DE2266 /* NotificationCenter.framework */; };
 		5A1D3B6E1DAE174800DE2266 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B6D1DAE174800DE2266 /* TodayViewController.swift */; };
 		5A1D3B711DAE174800DE2266 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A1D3B6F1DAE174800DE2266 /* MainInterface.storyboard */; };
@@ -29,6 +28,8 @@
 		5A1D3B7B1DAE19B200DE2266 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B541DAE14F900DE2266 /* StorageManager.swift */; };
 		5A1D3B7C1DAE19B200DE2266 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B551DAE14F900DE2266 /* VPNManager.swift */; };
 		5A1D3B7D1DAE1F2100DE2266 /* VPNAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B511DAE14F900DE2266 /* VPNAccount.swift */; };
+		5A1D3B871DAE2A8700DE2266 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */; };
+		5A56B74A1DAE2CFB0009E85F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */; };
 		5D343BE40370DD082C9DC6B2 /* Pods_TodayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778389684106B662B4E83231 /* Pods_TodayExtension.framework */; };
 		AD4644B7058CC43AE7EACC74 /* Pods_VPNSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */; };
 /* End PBXBuildFile section */
@@ -75,13 +76,14 @@
 		5A1D3B551DAE14F900DE2266 /* VPNManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 		5A1D3B571DAE14F900DE2266 /* VPNCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNCell.swift; sourceTree = "<group>"; };
 		5A1D3B581DAE14F900DE2266 /* VPNStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNStatusCell.swift; sourceTree = "<group>"; };
-		5A1D3B621DAE150D00DE2266 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		5A1D3B641DAE150D00DE2266 /* VPNSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNSwitch.entitlements; sourceTree = "<group>"; };
 		5A1D3B691DAE174800DE2266 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1D3B6A1DAE174800DE2266 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		5A1D3B6D1DAE174800DE2266 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		5A1D3B701DAE174800DE2266 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		5A1D3B721DAE174800DE2266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A1D3B7F1DAE239600DE2266 /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
+		5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		778389684106B662B4E83231 /* Pods_TodayExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AF231A5EE8E01F0C3D789E /* Pods-TodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayExtension/Pods-TodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,7 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD4644B7058CC43AE7EACC74 /* Pods_VPNSwitch.framework in Frameworks */,
-				5A1D3B631DAE150D00DE2266 /* NetworkExtension.framework in Frameworks */,
+				5A56B74A1DAE2CFB0009E85F /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A1D3B6B1DAE174800DE2266 /* NotificationCenter.framework in Frameworks */,
+				5A1D3B871DAE2A8700DE2266 /* NetworkExtension.framework in Frameworks */,
 				5D343BE40370DD082C9DC6B2 /* Pods_TodayExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,7 +116,7 @@
 		0D1CA7FDD178C4FEC62796C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5A1D3B621DAE150D00DE2266 /* NetworkExtension.framework */,
+				5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */,
 				8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */,
 				5A1D3B6A1DAE174800DE2266 /* NotificationCenter.framework */,
 				778389684106B662B4E83231 /* Pods_TodayExtension.framework */,
@@ -198,6 +201,7 @@
 		5A1D3B6C1DAE174800DE2266 /* TodayExtension */ = {
 			isa = PBXGroup;
 			children = (
+				5A1D3B7F1DAE239600DE2266 /* TodayExtension.entitlements */,
 				5A1D3B6D1DAE174800DE2266 /* TodayViewController.swift */,
 				5A1D3B6F1DAE174800DE2266 /* MainInterface.storyboard */,
 				5A1D3B721DAE174800DE2266 /* Info.plist */,
@@ -274,8 +278,14 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = LMJACF6T63;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.VPNLite = {
 								enabled = 1;
 							};
@@ -284,7 +294,18 @@
 					5A1D3B681DAE174800DE2266 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = LMJACF6T63;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.VPNLite = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -577,12 +598,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VPNSwitch/VPNSwitch.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LMJACF6T63;
 				INFOPLIST_FILE = VPNSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a7166344-b87b-420a-9a60-25f315819560";
+				PROVISIONING_PROFILE_SPECIFIER = VPNSwitch_Dev;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -596,12 +620,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VPNSwitch/VPNSwitch.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = LMJACF6T63;
 				INFOPLIST_FILE = VPNSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3181572a-3803-4bef-8885-22a105cc485f";
+				PROVISIONING_PROFILE_SPECIFIER = VPNSwitch;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -610,12 +637,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B5AF231A5EE8E01F0C3D789E /* Pods-TodayExtension.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = LMJACF6T63;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.todayextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.extension.today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0bb90177-0446-4d86-a0c4-3557305e2230";
+				PROVISIONING_PROFILE_SPECIFIER = VPNSwitchExtensions_Dev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -625,12 +656,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF666D60C78BD8CBDF153B75 /* Pods-TodayExtension.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = LMJACF6T63;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.todayextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.extension.today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bb7ea058-8335-4ddd-9aa4-61203e3cee0f";
+				PROVISIONING_PROFILE_SPECIFIER = VPNSwitchTodayExtension;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};

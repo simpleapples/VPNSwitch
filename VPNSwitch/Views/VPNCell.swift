@@ -13,6 +13,7 @@ class VPNCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var serverLabel: UILabel!
     @IBOutlet weak var activeView: UIView!
+    @IBOutlet weak var latencyLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +23,11 @@ class VPNCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func config(_ vpnAccount: VPNAccount) {
+    public func setLatency(_ milliseconds: UInt) {
+        self.latencyLabel.text = String(milliseconds) + "ms"
+    }
+    
+    public func config(_ vpnAccount: VPNAccount) {
         nameLabel.text = vpnAccount.name
         serverLabel.text = vpnAccount.server
         if vpnAccount.isActived {

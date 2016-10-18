@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import PlainPing
 
 let VPNStatusCellIdentifier = "VPNStatusCell"
 let VPNCellIdentifier = "VPNCell"
@@ -17,6 +18,7 @@ class VPNListViewController: UITableViewController {
     var allVPNs = StorageManager.sharedManager.allVPNAccounts
     var notificationToken: NotificationToken? = nil
     var selectedIndexPath: IndexPath? = nil
+    var timer: Timer? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,22 @@ class VPNListViewController: UITableViewController {
         
         notificationToken = allVPNs.addNotificationBlock { [weak self] (changes: RealmCollectionChange) in
             self?.tableView.reloadData()
+        }
+        
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updateLatency), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func updateLatency() {
+        for indexPath in self.tableView.indexPathsForVisibleRows! as [IndexPath] {
+            if indexPath.section == 1 {
+                let vpn = self.allVPNs[(indexPath.row)]
+                PlainPing.ping(vpn.server, withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
+                    if let latency = timeElapsed {
+                        let cell = self.tableView.cellForRow(at: indexPath) as! VPNCell
+                        cell.setLatency(UInt(latency))
+                    }
+                })
+            }
         }
     }
     
@@ -43,6 +61,8 @@ class VPNListViewController: UITableViewController {
     
     deinit {
         notificationToken?.stop()
+        timer?.invalidate()
+        timer = nil
     }
 
     // MARK: - UITableViewDataSource
@@ -59,7 +79,7 @@ class VPNListViewController: UITableViewController {
         }
         return 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath as NSIndexPath).section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: VPNStatusCellIdentifier, for: indexPath) as! VPNStatusCell

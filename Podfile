@@ -5,6 +5,7 @@ target 'VPNSwitch' do
 
 pod 'RealmSwift'
 pod 'SwiftKeychainWrapper'
+pod "PlainPing"
 
 end
 
