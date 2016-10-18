@@ -30,6 +30,7 @@
 		5A1D3B7D1DAE1F2100DE2266 /* VPNAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B511DAE14F900DE2266 /* VPNAccount.swift */; };
 		5A1D3B871DAE2A8700DE2266 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */; };
 		5A56B74A1DAE2CFB0009E85F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */; };
+		5AB3617F1DB6157800B30221 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3617E1DB6157800B30221 /* Color+Extension.swift */; };
 		5D343BE40370DD082C9DC6B2 /* Pods_TodayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778389684106B662B4E83231 /* Pods_TodayExtension.framework */; };
 		AD4644B7058CC43AE7EACC74 /* Pods_VPNSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		5A1D3B721DAE174800DE2266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A1D3B7F1DAE239600DE2266 /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
 		5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		5AB3617E1DB6157800B30221 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		778389684106B662B4E83231 /* Pods_TodayExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AF231A5EE8E01F0C3D789E /* Pods-TodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayExtension/Pods-TodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,8 +155,9 @@
 				5A1D3B501DAE14F900DE2266 /* Models */,
 				5A1D3B521DAE14F900DE2266 /* Services */,
 				5A1D3B561DAE14F900DE2266 /* Views */,
-				5A1D3B3C1DAE142C00DE2266 /* Main.storyboard */,
+				5AB361791DB6152800B30221 /* Utils */,
 				5A1D3B3F1DAE142C00DE2266 /* Assets.xcassets */,
+				5A1D3B3C1DAE142C00DE2266 /* Main.storyboard */,
 				5A1D3B411DAE142C00DE2266 /* LaunchScreen.storyboard */,
 				5A1D3B441DAE142C00DE2266 /* Info.plist */,
 			);
@@ -207,6 +210,14 @@
 				5A1D3B721DAE174800DE2266 /* Info.plist */,
 			);
 			path = TodayExtension;
+			sourceTree = "<group>";
+		};
+		5AB361791DB6152800B30221 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5AB3617E1DB6157800B30221 /* Color+Extension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		96477DD3DD19A039A83E208C /* Pods */ = {
@@ -441,6 +452,7 @@
 				5A1D3B591DAE14F900DE2266 /* EditVPNViewController.swift in Sources */,
 				5A1D3B601DAE14F900DE2266 /* VPNCell.swift in Sources */,
 				5A1D3B611DAE14F900DE2266 /* VPNStatusCell.swift in Sources */,
+				5AB3617F1DB6157800B30221 /* Color+Extension.swift in Sources */,
 				5A1D3B5A1DAE14F900DE2266 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

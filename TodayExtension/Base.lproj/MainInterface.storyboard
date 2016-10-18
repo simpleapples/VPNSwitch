@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未连接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqE-07-ct4">
@@ -24,11 +24,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKp-s4-wbH">
+                                <color key="onTintColor" red="0.56470588239999997" green="0.074509803920000006" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="switchButtonValueChanged:" destination="M4Y-Lb-cyx" eventType="valueChanged" id="Jeb-w6-P3n"/>
                                 </connections>
                             </switch>
                         </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FKp-s4-wbH" secondAttribute="trailing" constant="16" id="1Hz-5s-iEO"/>
                             <constraint firstItem="FKp-s4-wbH" firstAttribute="leading" secondItem="kqE-07-ct4" secondAttribute="trailing" constant="10" id="23q-QH-BfH"/>
@@ -42,7 +44,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="37"/>
+                    <size key="freeformSize" width="320" height="40"/>
                     <connections>
                         <outlet property="statusLabel" destination="kqE-07-ct4" id="rLO-XF-io4"/>
                         <outlet property="switchButton" destination="FKp-s4-wbH" id="4sn-xk-FRs"/>

@@ -24,6 +24,13 @@ class VPNCell: UITableViewCell {
     }
     
     public func setLatency(_ milliseconds: UInt) {
+        if milliseconds < 300 {
+            latencyLabel.textColor = UIColor.successColor
+        } else if milliseconds < 600 {
+            latencyLabel.textColor = UIColor.warningColor
+        } else {
+            latencyLabel.textColor = UIColor.dangerColor
+        }
         self.latencyLabel.text = String(milliseconds) + "ms"
     }
     

@@ -35,7 +35,7 @@ class VPNListViewController: UITableViewController {
         for indexPath in self.tableView.indexPathsForVisibleRows! as [IndexPath] {
             if indexPath.section == 1 {
                 let vpn = self.allVPNs[(indexPath.row)]
-                PlainPing.ping(vpn.server, withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
+                PlainPing.ping(vpn.server, withTimeout: 2.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
                     if let latency = timeElapsed {
                         let cell = self.tableView.cellForRow(at: indexPath) as! VPNCell
                         cell.setLatency(UInt(latency))
