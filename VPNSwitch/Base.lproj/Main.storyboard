@@ -85,7 +85,7 @@
                                         <constraint firstItem="RED-J1-RCh" firstAttribute="leading" secondItem="ScX-js-MMP" secondAttribute="trailing" constant="16" id="h3O-jQ-bMg"/>
                                         <constraint firstItem="RED-J1-RCh" firstAttribute="centerY" secondItem="Ih6-9e-lDr" secondAttribute="centerY" constant="-15" id="nLy-jO-5l5"/>
                                         <constraint firstItem="1kC-Xm-Yon" firstAttribute="centerY" secondItem="Ih6-9e-lDr" secondAttribute="centerY" id="qD3-rj-5F8"/>
-                                        <constraint firstAttribute="trailing" secondItem="1kC-Xm-Yon" secondAttribute="trailing" constant="16" id="vXF-5s-8oa"/>
+                                        <constraint firstAttribute="trailing" secondItem="1kC-Xm-Yon" secondAttribute="trailing" constant="8" id="vXF-5s-8oa"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">

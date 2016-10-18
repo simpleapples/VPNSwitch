@@ -48,16 +48,16 @@ class VPNAccount: Object {
     }
     var passwordReference: Data? {
         get {
-            if let passwordRef = Keychain.passwordDataReference(uuid) {
-                return passwordRef
+            if let passwordReference = Keychain.passwordDataReference(uuid) {
+                return passwordReference
             }
             return nil
         }
     }
     var secretKeyReference: Data? {
         get {
-            if let secretKeyRef = Keychain.secretKeyDataReference(uuid) {
-                return secretKeyRef
+            if let secretKeyReference = Keychain.secretKeyDataReference(uuid) {
+                return secretKeyReference
             }
             return nil
         }
