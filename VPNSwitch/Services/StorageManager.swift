@@ -14,8 +14,10 @@ class StorageManager {
     
     static let sharedManager = StorageManager()
     fileprivate init() {
-        let config = Realm.Configuration()
-        config.fileURL!.deletingLastPathComponent().appendingPathComponent("vpnswitch.realm")
+        let fileURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.zangzhiya.vpnswitch")?.appendingPathComponent("vpnswitch.realm")
+        
+        var config = Realm.Configuration()
+        config.fileURL = fileURL
         self.realm = try! Realm(configuration: config)
     }
     

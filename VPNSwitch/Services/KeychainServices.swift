@@ -11,36 +11,38 @@ import SwiftKeychainWrapper
 
 class Keychain {
     
+    static let keychainWrapper = KeychainWrapper(serviceName: Bundle.main.bundleIdentifier!, accessGroup: "group.com.zangzhiya.vpnswitch")
+    
     static func savePassword(_ password: String, uuid: String) -> Bool {
         let key = uuid + "-password"
-        KeychainWrapper.standard.removeObject(forKey: key)
-        return KeychainWrapper.standard.set(password, forKey: key)
+        keychainWrapper.removeObject(forKey: key)
+        return keychainWrapper.set(password, forKey: key)
     }
     
     static func saveSecretKey(_ secretKey: String, uuid: String) -> Bool {
         let key = uuid + "-secretKey"
-        KeychainWrapper.standard.removeObject(forKey: key)
-        return KeychainWrapper.standard.set(secretKey, forKey: key)
+        keychainWrapper.removeObject(forKey: key)
+        return keychainWrapper.set(secretKey, forKey: key)
     }
     
     static func passwordDataReference(_ uuid: String) -> Data? {
         let key = uuid + "-password"
-        return KeychainWrapper.standard.dataRef(forKey: key)
+        return keychainWrapper.dataRef(forKey: key)
     }
     
     static func secretKeyDataReference(_ uuid: String) -> Data? {
         let key = uuid + "-secretKey"
-        return KeychainWrapper.standard.dataRef(forKey: key)
+        return keychainWrapper.dataRef(forKey: key)
     }
     
     static func passwordString(_ uuid: String) -> String? {
         let key = uuid + "-password"
-        return KeychainWrapper.standard.string(forKey: key)
+        return keychainWrapper.string(forKey: key)
     }
     
     static func secretKeyString(_ uuid: String) -> String? {
         let key = uuid + "-secretKey"
-        return KeychainWrapper.standard.string(forKey: key)
+        return keychainWrapper.string(forKey: key)
     }
     
 }
