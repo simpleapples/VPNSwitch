@@ -23,15 +23,24 @@ class VPNCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func setLatency(_ milliseconds: UInt) {
-        if milliseconds < 300 {
-            latencyLabel.textColor = UIColor.successColor
-        } else if milliseconds < 600 {
-            latencyLabel.textColor = UIColor.warningColor
+    public func setLatencyHidden(_ isHidden: Bool) {
+        latencyLabel.isHidden = isHidden
+    }
+    
+    public func setLatency(_ milliseconds: Int) {
+        if milliseconds == -1 {
+            latencyLabel.textColor = UIColor.black
+            latencyLabel.text = "-- ms"
         } else {
-            latencyLabel.textColor = UIColor.dangerColor
+            if milliseconds < 300 {
+                latencyLabel.textColor = UIColor.successColor
+            } else if milliseconds < 600 {
+                latencyLabel.textColor = UIColor.warningColor
+            } else {
+                latencyLabel.textColor = UIColor.dangerColor
+            }
+            self.latencyLabel.text = String(milliseconds) + "ms"
         }
-        self.latencyLabel.text = String(milliseconds) + "ms"
     }
     
     public func config(_ vpnAccount: VPNAccount) {

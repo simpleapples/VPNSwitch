@@ -32,15 +32,19 @@ class VPNListViewController: UITableViewController {
     }
     
     @objc private func updateLatency() {
-        for indexPath in self.tableView.indexPathsForVisibleRows! as [IndexPath] {
+        for indexPath in tableView.indexPathsForVisibleRows! as [IndexPath] {
             if indexPath.section == 1 {
-                let vpn = self.allVPNs[(indexPath.row)]
-                PlainPing.ping(vpn.server, withTimeout: 2.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
-                    if let latency = timeElapsed {
-                        let cell = self.tableView.cellForRow(at: indexPath) as! VPNCell
-                        cell.setLatency(UInt(latency))
-                    }
-                })
+                let vpn = allVPNs[(indexPath.row)]
+                let cell = tableView.cellForRow(at: indexPath) as! VPNCell
+                if vpn.isActived {
+                    PlainPing.ping(vpn.server, withTimeout: 2.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
+                        if let latency = timeElapsed {
+                            cell.setLatency(Int(latency))
+                        }
+                    })
+                } else {
+                    cell.setLatency(-1)
+                }
             }
         }
     }
@@ -105,6 +109,10 @@ class VPNListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vpnAccount = allVPNs[(indexPath as NSIndexPath).row]
         StorageManager.sharedManager.setActived(vpnAccount.uuid)
+        for vpn in allVPNs {
+            let cell = tableView.cellForRow(at: indexPath) as! VPNCell
+            cell.setLatencyHidden(!vpn.isActived)
+        }
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
