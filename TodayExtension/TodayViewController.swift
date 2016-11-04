@@ -16,23 +16,28 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateInterface()
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateVPNStatus), name: NSNotification.Name(rawValue: VPNManager.VPNStatusChange), object: nil)
+    }
+    
+    private func updateInterface() {
+        updateVPNStatus()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
-        
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-        
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
         completionHandler(NCUpdateResult.newData)
     }
     
-    private func updateVPNStatus() {
+    @objc private func updateVPNStatus() {
         switch VPNManager.sharedManager.status {
         case .disconnected, .invalid:
             statusLabel.text = "未连接"
@@ -47,7 +52,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             statusLabel.text = "正在重连..."
             switchButton.isOn = true
         case .connected:
-            statusLabel.text = "已连接"
+            var serverString = ""
+            if let activedVPN = StorageManager.sharedManager.activedVPN {
+                serverString = " " + activedVPN.name
+            }
+            statusLabel.text = "已连接" + serverString
             switchButton.isOn = true
         }
     }
