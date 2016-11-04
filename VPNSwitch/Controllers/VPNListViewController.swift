@@ -109,10 +109,6 @@ class VPNListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vpnAccount = allVPNs[(indexPath as NSIndexPath).row]
         StorageManager.sharedManager.setActived(vpnAccount.uuid)
-        for vpn in allVPNs {
-            let cell = tableView.cellForRow(at: indexPath) as! VPNCell
-            cell.setLatencyHidden(!vpn.isActived)
-        }
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {

@@ -23,10 +23,6 @@ class VPNCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func setLatencyHidden(_ isHidden: Bool) {
-        latencyLabel.isHidden = isHidden
-    }
-    
     public func setLatency(_ milliseconds: Int) {
         if milliseconds == -1 {
             latencyLabel.textColor = UIColor.black
@@ -39,7 +35,7 @@ class VPNCell: UITableViewCell {
             } else {
                 latencyLabel.textColor = UIColor.dangerColor
             }
-            self.latencyLabel.text = String(milliseconds) + "ms"
+            latencyLabel.text = String(milliseconds) + "ms"
         }
     }
     
@@ -48,8 +44,10 @@ class VPNCell: UITableViewCell {
         serverLabel.text = vpnAccount.server
         if vpnAccount.isActived {
             activeView.backgroundColor = UIColor(red: 144 / 255.0, green: 19 / 255.0, blue: 254 / 255.0, alpha: 1)
+            latencyLabel.isHidden = false
         } else {
             activeView.backgroundColor = UIColor.white
+            latencyLabel.isHidden = true
         }
     }
 
