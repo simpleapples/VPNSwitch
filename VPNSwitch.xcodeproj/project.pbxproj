@@ -655,10 +655,10 @@
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.extension.today;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.todaywidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0bb90177-0446-4d86-a0c4-3557305e2230";
-				PROVISIONING_PROFILE_SPECIFIER = VPNSwitchExtensions_Dev;
+				PROVISIONING_PROFILE = "3c0b93a1-f431-4780-9a86-e9284fc1ddfb";
+				PROVISIONING_PROFILE_SPECIFIER = VPNSwitchTodayWidget_Dev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -674,10 +674,10 @@
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.extension.today;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.todaywidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb7ea058-8335-4ddd-9aa4-61203e3cee0f";
-				PROVISIONING_PROFILE_SPECIFIER = VPNSwitchTodayExtension;
+				PROVISIONING_PROFILE = "13ee9ae2-1f27-4a79-94f9-888808ca649d";
+				PROVISIONING_PROFILE_SPECIFIER = VPNSwitchTodayWidget;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
