@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol VPNStatusCellDelegate: class {
+    
+    func statusCell(_ cell: VPNStatusCell, switchButtonChanged sender:AnyObject)
+}
+
 class VPNStatusCell: UITableViewCell {
     
-    @IBOutlet weak var switchButton: UISwitch!
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet private weak var switchButton: UISwitch!
+    @IBOutlet private weak var statusLabel: UILabel!
+    
+    public weak var delegate: VPNStatusCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,11 +33,11 @@ class VPNStatusCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func config() {
+    public func config() {
         updateVPNStatus()
     }
     
-    @objc fileprivate func updateVPNStatus() {
+    @objc public func updateVPNStatus() {
         switch VPNManager.sharedManager.status {
         case .disconnected, .invalid:
             statusLabel.text = "未连接"
@@ -50,19 +57,8 @@ class VPNStatusCell: UITableViewCell {
         }
     }
 
-    @IBAction func switchButtonValueChanged(_ sender: AnyObject) {
-        let switcher = sender as! UISwitch
-        let status = VPNManager.sharedManager.status
-        if switcher.isOn == true && (status == .disconnected || status == .invalid) {
-            if let activedVPN = StorageManager.sharedManager.activedVPN {
-                VPNManager.sharedManager.setupVPNConfiguration(activedVPN)
-                VPNManager.sharedManager.startVPNTunnel()
-            }
-        }
-        if switcher.isOn == false && (status != .disconnected && status != .invalid) {
-            VPNManager.sharedManager.stopVPNTunnel()
-        }
-        updateVPNStatus()
+    @IBAction private func switchButtonValueChanged(_ sender: AnyObject) {
+        delegate?.statusCell(self, switchButtonChanged: sender)
     }
     
 }

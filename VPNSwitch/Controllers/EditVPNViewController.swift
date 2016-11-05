@@ -53,7 +53,10 @@ class EditVPNViewController: UITableViewController {
         if let vpnAccount = vpnAccount {
             _ = StorageManager.sharedManager.updateVPNAccount(vpnAccount.uuid, name: name!, server: server!, account: account!, password: password!, secretKey: secretKey!, group: group!, isAlwaysOnline: isAlwaysOnline)
         } else {
-            _ = StorageManager.sharedManager.insertVPNAccount(name!, server: server!, account: account!, password: password!, secretKey: secretKey!, group: group!, isAlwaysOnline: isAlwaysOnline)
+            let vpnAccount = StorageManager.sharedManager.insertVPNAccount(name!, server: server!, account: account!, password: password!, secretKey: secretKey!, group: group!, isAlwaysOnline: isAlwaysOnline)
+            if let vpnAccount = vpnAccount {
+                StorageManager.sharedManager.setActived(withUUID: vpnAccount.uuid)
+            }
         }
 
         _ = navigationController?.popViewController(animated: true)

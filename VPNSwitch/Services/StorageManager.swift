@@ -53,7 +53,7 @@ class StorageManager {
         return nil
     }
     
-    func setActived(_ uuid: String) {
+    func setActived(withUUID uuid: String) {
         realm.beginWrite()
         for vpnAccount in allVPNAccounts {
             if vpnAccount.uuid == uuid {

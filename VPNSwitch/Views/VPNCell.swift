@@ -10,10 +10,10 @@ import UIKit
 
 class VPNCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var serverLabel: UILabel!
-    @IBOutlet weak var activeView: UIView!
-    @IBOutlet weak var latencyLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var serverLabel: UILabel!
+    @IBOutlet private weak var activeView: UIView!
+    @IBOutlet private weak var latencyLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,11 +39,11 @@ class VPNCell: UITableViewCell {
         }
     }
     
-    public func config(_ vpnAccount: VPNAccount) {
+    public func config(withVPNAccount vpnAccount: VPNAccount) {
         nameLabel.text = vpnAccount.name
         serverLabel.text = vpnAccount.server
         if vpnAccount.isActived {
-            activeView.backgroundColor = UIColor(red: 144 / 255.0, green: 19 / 255.0, blue: 254 / 255.0, alpha: 1)
+            activeView.backgroundColor = UIColor(red: 27 / 255.0, green: 160 / 255.0, blue: 252 / 255.0, alpha: 1)
             latencyLabel.isHidden = false
         } else {
             activeView.backgroundColor = UIColor.white

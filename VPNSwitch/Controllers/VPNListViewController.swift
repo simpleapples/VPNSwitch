@@ -13,7 +13,7 @@ import PlainPing
 let VPNStatusCellIdentifier = "VPNStatusCell"
 let VPNCellIdentifier = "VPNCell"
 
-class VPNListViewController: UITableViewController {
+class VPNListViewController: UITableViewController, VPNStatusCellDelegate {
     
     var allVPNs = StorageManager.sharedManager.allVPNAccounts
     var notificationToken: NotificationToken? = nil
@@ -88,10 +88,11 @@ class VPNListViewController: UITableViewController {
         if (indexPath as NSIndexPath).section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: VPNStatusCellIdentifier, for: indexPath) as! VPNStatusCell
             cell.config()
+            cell.delegate = self
             return cell
         } else if (indexPath as NSIndexPath).section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: VPNCellIdentifier, for: indexPath) as! VPNCell
-            cell.config(allVPNs[(indexPath as NSIndexPath).row])
+            cell.config(withVPNAccount: allVPNs[(indexPath as NSIndexPath).row])
             return cell
         }
         return UITableViewCell()
@@ -108,7 +109,7 @@ class VPNListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vpnAccount = allVPNs[(indexPath as NSIndexPath).row]
-        StorageManager.sharedManager.setActived(vpnAccount.uuid)
+        StorageManager.sharedManager.setActived(withUUID: vpnAccount.uuid)
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
@@ -118,6 +119,23 @@ class VPNListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
+    }
+    
+    // MARK: - VPNStatusCellDelegate
+    
+    func statusCell(_ cell: VPNStatusCell, switchButtonChanged sender: AnyObject) {
+        let switcher = sender as! UISwitch
+        let status = VPNManager.sharedManager.status
+        if switcher.isOn == true && (status == .disconnected || status == .invalid) {
+            if let activedVPN = StorageManager.sharedManager.activedVPN {
+                VPNManager.sharedManager.setupVPNConfiguration(activedVPN)
+                VPNManager.sharedManager.startVPNTunnel()
+            }
+        }
+        if switcher.isOn == false && (status != .disconnected && status != .invalid) {
+            VPNManager.sharedManager.stopVPNTunnel()
+        }
+        cell.updateVPNStatus()
     }
     
     // MARK: - EventHandler
