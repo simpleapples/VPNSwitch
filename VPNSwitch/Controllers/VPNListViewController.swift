@@ -16,10 +16,10 @@ let VPNCellIdentifier = "VPNCell"
 
 class VPNListViewController: UITableViewController, VPNStatusCellDelegate {
     
-    var allVPNs = StorageManager.sharedManager.allVPNAccounts
-    var notificationToken: NotificationToken? = nil
-    var selectedIndexPath: IndexPath? = nil
-    var timer: Timer? = nil
+    private var allVPNs = StorageManager.sharedManager.allVPNAccounts
+    private var notificationToken: NotificationToken? = nil
+    private var selectedIndexPath: IndexPath? = nil
+    private var timer: Timer? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,7 @@ class VPNListViewController: UITableViewController, VPNStatusCellDelegate {
     }
     
     @objc private func updateLatency() {
+        
         for indexPath in tableView.indexPathsForVisibleRows! as [IndexPath] {
             if indexPath.section == 1 {
                 let vpn = allVPNs[(indexPath.row)]

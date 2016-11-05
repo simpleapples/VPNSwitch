@@ -22,26 +22,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未连接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqE-07-ct4">
-                                <rect key="frame" x="16" y="39.5" width="229" height="31"/>
+                                <rect key="frame" x="56" y="16" width="189" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FKp-s4-wbH">
-                                <rect key="frame" x="255" y="39.5" width="51" height="31"/>
+                                <rect key="frame" x="255" y="16" width="51" height="30"/>
                                 <color key="onTintColor" red="0.1058823529" green="0.62745098040000002" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="switchButtonValueChanged:" destination="M4Y-Lb-cyx" eventType="valueChanged" id="Jeb-w6-P3n"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未知网络" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnn-kU-7Xk">
+                                <rect key="frame" x="56" y="56" width="248" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconDisconnected" translatesAutoresizingMaskIntoConstraints="NO" id="J4k-vb-ICy">
+                                <rect key="frame" x="16" y="16" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="5an-Ye-8cw"/>
+                                    <constraint firstAttribute="height" constant="30" id="XZa-i1-COR"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconWifi" translatesAutoresizingMaskIntoConstraints="NO" id="Faf-dZ-Dda">
+                                <rect key="frame" x="16" y="56" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MEy-8J-8zZ"/>
+                                    <constraint firstAttribute="width" constant="30" id="jpO-q3-7Cu"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FKp-s4-wbH" secondAttribute="trailing" constant="16" id="1Hz-5s-iEO"/>
                             <constraint firstItem="FKp-s4-wbH" firstAttribute="leading" secondItem="kqE-07-ct4" secondAttribute="trailing" constant="10" id="23q-QH-BfH"/>
-                            <constraint firstItem="kqE-07-ct4" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="B6m-x4-HUJ"/>
+                            <constraint firstItem="J4k-vb-ICy" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="16" id="8Lr-Xe-ku9"/>
+                            <constraint firstItem="Xnn-kU-7Xk" firstAttribute="bottom" secondItem="Faf-dZ-Dda" secondAttribute="bottom" id="Azs-Zr-Br3"/>
+                            <constraint firstItem="Faf-dZ-Dda" firstAttribute="top" secondItem="J4k-vb-ICy" secondAttribute="bottom" constant="10" id="Fqi-Zz-TFh"/>
+                            <constraint firstItem="kqE-07-ct4" firstAttribute="top" secondItem="J4k-vb-ICy" secondAttribute="top" id="LKG-h1-5fS"/>
                             <constraint firstItem="FKp-s4-wbH" firstAttribute="top" secondItem="kqE-07-ct4" secondAttribute="top" id="Nvg-K1-WfQ"/>
-                            <constraint firstItem="kqE-07-ct4" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="16" id="W2W-JM-Uka"/>
+                            <constraint firstItem="J4k-vb-ICy" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="16" id="OtX-rQ-bx3"/>
+                            <constraint firstItem="kqE-07-ct4" firstAttribute="bottom" secondItem="J4k-vb-ICy" secondAttribute="bottom" id="V4A-5v-mu7"/>
+                            <constraint firstItem="Faf-dZ-Dda" firstAttribute="leading" secondItem="J4k-vb-ICy" secondAttribute="leading" id="Zbc-0c-qYJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Xnn-kU-7Xk" secondAttribute="trailing" constant="16" id="d8s-M6-bsT"/>
+                            <constraint firstItem="Xnn-kU-7Xk" firstAttribute="leading" secondItem="Faf-dZ-Dda" secondAttribute="trailing" constant="10" id="epJ-CI-cXi"/>
+                            <constraint firstItem="kqE-07-ct4" firstAttribute="leading" secondItem="J4k-vb-ICy" secondAttribute="trailing" constant="10" id="f6O-OY-YiZ"/>
+                            <constraint firstItem="Xnn-kU-7Xk" firstAttribute="top" secondItem="Faf-dZ-Dda" secondAttribute="top" id="igm-xu-7Ii"/>
                             <constraint firstItem="FKp-s4-wbH" firstAttribute="bottom" secondItem="kqE-07-ct4" secondAttribute="bottom" id="mBg-rv-v8f"/>
                         </constraints>
                     </view>
@@ -54,10 +83,17 @@
                     <connections>
                         <outlet property="statusLabel" destination="kqE-07-ct4" id="rLO-XF-io4"/>
                         <outlet property="switchButton" destination="FKp-s4-wbH" id="4sn-xk-FRs"/>
+                        <outlet property="wifiImageView" destination="J4k-vb-ICy" id="E0T-kp-lW9"/>
+                        <outlet property="wifiLabel" destination="Xnn-kU-7Xk" id="u0s-CT-wIL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="33.600000000000001" y="83.658170914542737"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="IconDisconnected" width="30" height="22"/>
+        <image name="IconWifi" width="25" height="25"/>
+    </resources>
 </document>

@@ -1,5 +1,5 @@
 //
-//  Color+Extension.swift
+//  UIColor+Extension.swift
 //  VPNSwitch
 //
 //  Created by Zzy on 18/10/2016.

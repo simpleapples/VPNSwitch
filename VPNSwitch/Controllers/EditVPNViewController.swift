@@ -10,12 +10,12 @@ import UIKit
 
 class EditVPNViewController: UITableViewController {
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var serverTextField: UITextField!
-    @IBOutlet weak var accountTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var secretKeyTextField: UITextField!
-    @IBOutlet weak var groupTextField: UITextField!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var serverTextField: UITextField!
+    @IBOutlet private weak var accountTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var secretKeyTextField: UITextField!
+    @IBOutlet private weak var groupTextField: UITextField!
     
     var vpnAccount: VPNAccount? = nil
     

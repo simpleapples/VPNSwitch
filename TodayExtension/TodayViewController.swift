@@ -11,12 +11,19 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var switchButton: UISwitch!
+    @IBOutlet private weak var statusLabel: UILabel!
+    @IBOutlet private weak var switchButton: UISwitch!
+    @IBOutlet private weak var wifiLabel: UILabel!
+    @IBOutlet private weak var wifiImageView: UIImageView!
+    
+    private var timer: Timer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateInterface()
+        
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateSSID), userInfo: nil, repeats: true)
+        
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(updateVPNStatus), name: NSNotification.Name(rawValue: VPNManager.VPNStatusChange), object: nil)
     }
@@ -37,20 +44,33 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.newData)
     }
     
+    @objc private func updateSSID() {
+        if let ssid = UIDevice.current.SSID {
+            wifiLabel.text = ssid
+        } else {
+            wifiLabel.text = "未知网络"
+        }
+    }
+    
     @objc private func updateVPNStatus() {
         var isOn = false
+        var imageName = "IconDisconnected"
         switch VPNManager.sharedManager.status {
         case .disconnected, .invalid:
             statusLabel.text = "未连接"
+            imageName = "IconDisconnected"
             isOn = false
         case .connecting:
             statusLabel.text = "正在连接..."
+            imageName = "IconConnecting"
             isOn = true
         case .disconnecting:
             statusLabel.text = "正在断开..."
+            imageName = "IconConnectinng"
             isOn = true
         case .reasserting:
             statusLabel.text = "正在重连..."
+            imageName = "IconConnectinng"
             isOn = true
         case .connected:
             var serverString = ""
@@ -58,8 +78,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 serverString = " " + activedVPN.name
             }
             statusLabel.text = "已连接" + serverString
+            imageName = "IconConnected"
             isOn = true
         }
+        wifiImageView.image = UIImage.init(named: imageName)
         if switchButton.isOn != isOn {
             switchButton.isOn = isOn
         }
