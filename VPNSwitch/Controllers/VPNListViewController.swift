@@ -134,6 +134,7 @@ class VPNListViewController: UITableViewController, VPNStatusCellDelegate {
             } else {
                 let popup = PopupDialog(title: "请选择一个VPN", message: "请添加或选择一个VPN，然后重新连接")
                 let confirmButton = DefaultButton(title: "好的") {
+                    cell.updateVPNStatus()
                 }
                 popup.addButtons([confirmButton])
                 self.present(popup, animated: true, completion: nil)
