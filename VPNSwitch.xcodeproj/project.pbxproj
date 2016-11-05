@@ -657,7 +657,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zangzhiya.vpnswitch.todaywidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c0b93a1-f431-4780-9a86-e9284fc1ddfb";
+				PROVISIONING_PROFILE = "9ea5ff2e-8291-44d7-a307-3f7eb9bf8dd5";
 				PROVISIONING_PROFILE_SPECIFIER = VPNSwitchTodayWidget_Dev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;

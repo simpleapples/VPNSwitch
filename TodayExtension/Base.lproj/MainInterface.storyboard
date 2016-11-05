@@ -29,7 +29,7 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FKp-s4-wbH">
                                 <rect key="frame" x="255" y="39.5" width="51" height="31"/>
-                                <color key="onTintColor" red="0.56470588239999997" green="0.074509803920000006" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="onTintColor" red="0.1058823529" green="0.62745098040000002" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="switchButtonValueChanged:" destination="M4Y-Lb-cyx" eventType="valueChanged" id="Jeb-w6-P3n"/>
                                 </connections>
