@@ -38,29 +38,33 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @objc private func updateVPNStatus() {
+        var isOn = false
         switch VPNManager.sharedManager.status {
         case .disconnected, .invalid:
             statusLabel.text = "未连接"
-            switchButton.isOn = false
+            isOn = false
         case .connecting:
             statusLabel.text = "正在连接..."
-            switchButton.isOn = true
+            isOn = true
         case .disconnecting:
             statusLabel.text = "正在断开..."
-            switchButton.isOn = true
+            isOn = true
         case .reasserting:
             statusLabel.text = "正在重连..."
-            switchButton.isOn = true
+            isOn = true
         case .connected:
             var serverString = ""
             if let activedVPN = StorageManager.sharedManager.activedVPN {
                 serverString = " " + activedVPN.name
             }
             statusLabel.text = "已连接" + serverString
-            switchButton.isOn = true
+            isOn = true
+        }
+        if switchButton.isOn != isOn {
+            switchButton.isOn = isOn
         }
     }
-    
+
     @IBAction func switchButtonValueChanged(_ sender: AnyObject) {
         let switcher = sender as! UISwitch
         let status = VPNManager.sharedManager.status
@@ -73,6 +77,5 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         if switcher.isOn == false && (status != .disconnected && status != .invalid) {
             VPNManager.sharedManager.stopVPNTunnel()
         }
-        updateVPNStatus()
     }
 }

@@ -38,22 +38,26 @@ class VPNStatusCell: UITableViewCell {
     }
     
     @objc public func updateVPNStatus() {
+        var isOn = false
         switch VPNManager.sharedManager.status {
         case .disconnected, .invalid:
             statusLabel.text = "未连接"
-            switchButton.isOn = false
+            isOn = false
         case .connecting:
             statusLabel.text = "正在连接..."
-            switchButton.isOn = true
+            isOn = true
         case .disconnecting:
             statusLabel.text = "正在断开..."
-            switchButton.isOn = true
+            isOn = true
         case .reasserting:
             statusLabel.text = "正在重连..."
-            switchButton.isOn = true
+            isOn = true
         case .connected:
             statusLabel.text = "已连接"
-            switchButton.isOn = true
+            isOn = true
+        }
+        if switchButton.isOn != isOn {
+            switchButton.isOn = isOn
         }
     }
 

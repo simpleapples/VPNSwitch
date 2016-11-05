@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = " "; ObjectID = "1kC-Xm-Yon"; */
+"1kC-Xm-Yon.text" = " ";
+
+/* Class = "UILabel"; text = "服务器"; ObjectID = "2BM-9K-Vau"; */
+"2BM-9K-Vau.text" = "服务器";
+
+/* Class = "UITextField"; placeholder = "必填"; ObjectID = "EQD-0z-VES"; */
+"EQD-0z-VES.placeholder" = "必填";
+
+/* Class = "UINavigationItem"; title = "VPN 开关"; ObjectID = "P2d-o1-Iw0"; */
+"P2d-o1-Iw0.title" = "VPN 开关";
+
+/* Class = "UILabel"; text = "VPN"; ObjectID = "RED-J1-RCh"; */
+"RED-J1-RCh.text" = "VPN";
+
+/* Class = "UILabel"; text = "未连接"; ObjectID = "UMH-Az-lM3"; */
+"UMH-Az-lM3.text" = "未连接";
+
+/* Class = "UITextField"; placeholder = "必填"; ObjectID = "Zt3-Sx-1tg"; */
+"Zt3-Sx-1tg.placeholder" = "必填";
+
+/* Class = "UILabel"; text = "删除VPN配置"; ObjectID = "aH9-LW-knO"; */
+"aH9-LW-knO.text" = "删除VPN配置";
+
+/* Class = "UILabel"; text = "0.0.0.0"; ObjectID = "bA6-se-o1W"; */
+"bA6-se-o1W.text" = "0.0.0.0";
+
+/* Class = "UILabel"; text = "名称"; ObjectID = "d5n-4T-Ur0"; */
+"d5n-4T-Ur0.text" = "名称";
+
+/* Class = "UILabel"; text = "密码"; ObjectID = "fDT-Wa-rZH"; */
+"fDT-Wa-rZH.text" = "密码";
+
+/* Class = "UILabel"; text = "账号"; ObjectID = "iaL-Nn-gyc"; */
+"iaL-Nn-gyc.text" = "账号";
+
+/* Class = "UILabel"; text = "保持在线"; ObjectID = "l47-mX-wNT"; */
+"l47-mX-wNT.text" = "保持在线";
+
+/* Class = "UILabel"; text = "组"; ObjectID = "mL1-p0-RIC"; */
+"mL1-p0-RIC.text" = "组";
+
+/* Class = "UILabel"; text = "共享密钥"; ObjectID = "p3L-NU-KgX"; */
+"p3L-NU-KgX.text" = "共享密钥";
+
+/* Class = "UITextField"; placeholder = "必填"; ObjectID = "rdK-Wb-X5u"; */
+"rdK-Wb-X5u.placeholder" = "必填";
+
+/* Class = "UINavigationItem"; title = "创建"; ObjectID = "znu-y0-6y5"; */
+"znu-y0-6y5.title" = "创建";
