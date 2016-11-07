@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PopupDialog
 
 class EditVPNViewController: UITableViewController {
     
@@ -24,7 +25,12 @@ class EditVPNViewController: UITableViewController {
         updateInterface()
     }
     
-    fileprivate func updateInterface() {
+    private func updateInterface() {
+        if self.vpnAccount != nil {
+            title = "编辑"
+        } else {
+            title = "创建"
+        }
         if let vpnAccount = vpnAccount {
             nameTextField.text = vpnAccount.name
             serverTextField.text = vpnAccount.server
@@ -41,7 +47,7 @@ class EditVPNViewController: UITableViewController {
 
     // MARK: - EventHandler
 
-    @IBAction func saveButtonTouchUp(_ sender: AnyObject) {
+    @IBAction private func saveButtonTouchUp(_ sender: AnyObject) {
         let name = nameTextField.text
         let server = serverTextField.text
         let account = accountTextField.text
@@ -60,6 +66,33 @@ class EditVPNViewController: UITableViewController {
         }
 
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+extension EditVPNViewController {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if self.vpnAccount != nil {
+            return 3
+        }
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 && indexPath.row == 0 {
+            let popup = PopupDialog(title: "删除这个VPN？", message: nil, image: nil, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: true, completion: nil)
+            let confirmButton = DestructiveButton(title: "删除") {
+                StorageManager.sharedManager.deleteVPNAccount((self.vpnAccount?.uuid)!)
+                _ = self.navigationController?.popViewController(animated: true)
+            }
+            let cancelButton = CancelButton(title: "不删除") {
+            }
+            popup.addButtons([confirmButton, cancelButton])
+            self.present(popup, animated: true, completion: nil)
+        } else {
+            tableView .deselectRow(at: indexPath, animated: false)
+        }
     }
     
 }

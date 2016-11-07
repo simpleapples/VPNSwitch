@@ -143,7 +143,7 @@ extension VPNListViewController: VPNStatusCellDelegate {
                 VPNManager.sharedManager.setupVPNConfiguration(activedVPN)
                 VPNManager.sharedManager.startVPNTunnel()
             } else {
-                let popup = PopupDialog(title: "请选择一个VPN", message: "请添加或选择一个VPN，然后重新连接")
+                let popup = PopupDialog(title: "请选择一个VPN", message: "请添加或选择一个VPN，然后重新连接", image: nil, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: true, completion: nil)
                 let confirmButton = DefaultButton(title: "好的") {
                     cell.updateVPNStatus()
                 }
