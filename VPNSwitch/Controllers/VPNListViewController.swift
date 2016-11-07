@@ -14,11 +14,11 @@ import PopupDialog
 let VPNStatusCellIdentifier = "VPNStatusCell"
 let VPNCellIdentifier = "VPNCell"
 
-class VPNListViewController: UITableViewController, VPNStatusCellDelegate {
+class VPNListViewController: UITableViewController {
     
-    private var allVPNs = StorageManager.sharedManager.allVPNAccounts
+    fileprivate var allVPNs = StorageManager.sharedManager.allVPNAccounts
+    fileprivate var selectedIndexPath: IndexPath? = nil
     private var notificationToken: NotificationToken? = nil
-    private var selectedIndexPath: IndexPath? = nil
     private var timer: Timer? = nil
 
     override func viewDidLoad() {
@@ -70,8 +70,16 @@ class VPNListViewController: UITableViewController, VPNStatusCellDelegate {
         timer?.invalidate()
         timer = nil
     }
+    
+    
+    @IBAction func addVPNButtonTouchUp(_ sender: AnyObject) {
+        selectedIndexPath = nil
+        performSegue(withIdentifier: "VPNListToEditVPNSegue", sender: sender)
+    }
+    
+}
 
-    // MARK: - UITableViewDataSource
+extension VPNListViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -123,7 +131,9 @@ class VPNListViewController: UITableViewController, VPNStatusCellDelegate {
         return 0
     }
     
-    // MARK: - VPNStatusCellDelegate
+}
+
+extension VPNListViewController: VPNStatusCellDelegate {
     
     func statusCell(_ cell: VPNStatusCell, switchButtonChanged sender: AnyObject) {
         let switcher = sender as! UISwitch
@@ -144,13 +154,6 @@ class VPNListViewController: UITableViewController, VPNStatusCellDelegate {
         if switcher.isOn == false && (status != .disconnected && status != .invalid) {
             VPNManager.sharedManager.stopVPNTunnel()
         }
-    }
-    
-    // MARK: - EventHandler
-
-    @IBAction func addVPNButtonTouchUp(_ sender: AnyObject) {
-        selectedIndexPath = nil
-        performSegue(withIdentifier: "VPNListToEditVPNSegue", sender: sender)
     }
     
 }
