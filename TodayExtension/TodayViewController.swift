@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationCenter
+import ReachabilitySwift
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
@@ -16,20 +17,36 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet private weak var wifiLabel: UILabel!
     @IBOutlet private weak var wifiImageView: UIImageView!
     
-    private var timer: Timer? = nil
+    private var reachability: Reachability?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateInterface()
         
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateSSID), userInfo: nil, repeats: true)
+        reachability = Reachability()
+        reachability?.whenReachable = { [weak self] Reachability in
+            DispatchQueue.main.async {
+                self?.updateSSID()
+            }
+        }
+        reachability?.whenUnreachable = { [weak self] Reachability in
+            DispatchQueue.main.async {
+                self?.updateSSID()
+            }
+        }
+        do {
+            try reachability?.startNotifier()
+        } catch {
+        }
         
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self, selector: #selector(updateVPNStatus), name: NSNotification.Name(rawValue: VPNManager.VPNStatusChange), object: nil)
+        
+        updateInterface()
     }
     
     private func updateInterface() {
         updateVPNStatus()
+        updateSSID()
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,6 +54,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     deinit {
+        reachability?.stopNotifier()
+        reachability = nil
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -45,10 +64,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @objc private func updateSSID() {
-        if let ssid = UIDevice.current.SSID {
-            wifiLabel.text = ssid
+        if reachability?.currentReachabilityStatus == .reachableViaWiFi {
+            if let ssid = UIDevice.current.SSID {
+                wifiLabel.text = ssid
+            } else {
+                wifiLabel.text = "未知网络"
+            }
         } else {
-            wifiLabel.text = "未知网络"
+            wifiLabel.text = "未连接Wifi"
         }
     }
     

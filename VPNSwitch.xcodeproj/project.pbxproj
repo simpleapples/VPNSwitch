@@ -678,6 +678,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = VPNSwitchTodayWidget_Dev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -697,6 +698,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = VPNSwitchTodayWidget;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

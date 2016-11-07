@@ -14,6 +14,7 @@ target 'TodayExtension' do
 
 pod 'RealmSwift'
 pod 'SwiftKeychainWrapper'
+pod 'ReachabilitySwift'
 
 end
 
