@@ -35,6 +35,7 @@
 		5ADE0F4F1DCDD1A100E98B93 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE0F4D1DCDCD4E00E98B93 /* UIDevice+Extension.swift */; };
 		5ADE0F501DCDD1A300E98B93 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3617E1DB6157800B30221 /* UIColor+Extension.swift */; };
 		5ADE0F511DCDD28000E98B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A1D3B3F1DAE142C00DE2266 /* Assets.xcassets */; };
+		5AFFABA61DD0967700E024F4 /* Pods-VPNSwitch-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AFFABA51DD0967700E024F4 /* Pods-VPNSwitch-acknowledgements.plist */; };
 		5D343BE40370DD082C9DC6B2 /* Pods_TodayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778389684106B662B4E83231 /* Pods_TodayExtension.framework */; };
 		AD4644B7058CC43AE7EACC74 /* Pods_VPNSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,7 @@
 		5ADE0F481DCDC8EE00E98B93 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		5ADE0F491DCDC8EF00E98B93 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		5ADE0F4D1DCDCD4E00E98B93 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		5AFFABA51DD0967700E024F4 /* Pods-VPNSwitch-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-VPNSwitch-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-VPNSwitch/Pods-VPNSwitch-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 		778389684106B662B4E83231 /* Pods_TodayExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC4145994379C92D090C1B8 /* Pods_VPNSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AF231A5EE8E01F0C3D789E /* Pods-TodayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayExtension/Pods-TodayExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		5A1D3B371DAE142C00DE2266 /* VPNSwitch */ = {
 			isa = PBXGroup;
 			children = (
+				5AFFABA51DD0967700E024F4 /* Pods-VPNSwitch-acknowledgements.plist */,
 				5A1D3B641DAE150D00DE2266 /* VPNSwitch.entitlements */,
 				5A1D3B4A1DAE14F000DE2266 /* AppDelegate.swift */,
 				5A1D3B4C1DAE14F900DE2266 /* Controllers */,
@@ -352,6 +355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AFFABA61DD0967700E024F4 /* Pods-VPNSwitch-acknowledgements.plist in Resources */,
 				5A1D3B431DAE142C00DE2266 /* LaunchScreen.storyboard in Resources */,
 				5A1D3B401DAE142C00DE2266 /* Assets.xcassets in Resources */,
 				5A1D3B3E1DAE142C00DE2266 /* Main.storyboard in Resources */,

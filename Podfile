@@ -7,6 +7,7 @@ pod 'RealmSwift'
 pod 'SwiftKeychainWrapper'
 pod 'PlainPing'
 pod 'PopupDialog'
+pod 'AcknowList'
 
 end
 
