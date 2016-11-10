@@ -19,10 +19,10 @@
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VPNStatusCell" rowHeight="50" id="7ep-7a-XXd" customClass="VPNStatusCell" customModule="VPNSwitch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7ep-7a-XXd" id="J59-WY-O5C">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未连接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMH-Az-lM3">
@@ -52,10 +52,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="VPNCell" rowHeight="100" id="FoC-0q-psP" customClass="VPNCell" customModule="VPNSwitch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="105.5" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="106" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FoC-0q-psP" id="Ih6-9e-lDr">
-                                    <rect key="frame" x="0.0" y="0.0" width="328" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VPN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RED-J1-RCh">
@@ -118,6 +118,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="VPN 开关" id="P2d-o1-Iw0">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="ww9-Dp-GQL"/>
                         <barButtonItem key="leftBarButtonItem" image="IconSetting" id="lJQ-36-fdT">
                             <connections>
                                 <segue destination="t0w-vn-CKE" kind="show" id="PmF-7v-ify"/>
@@ -421,6 +422,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="创建" id="znu-y0-6y5">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="bCE-4B-9al"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="7lx-vW-4Me">
                             <connections>
                                 <action selector="saveButtonTouchUp:" destination="ucd-cy-TZ2" id="yKu-AS-men"/>
@@ -440,7 +442,7 @@
             </objects>
             <point key="canvasLocation" x="2028" y="-85.007496251874073"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--设置-->
         <scene sceneID="Sgi-Fk-HMd">
             <objects>
                 <tableViewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t0w-vn-CKE" customClass="SettingViewController" customModule="VPNSwitch" customModuleProvider="target" sceneMemberID="viewController">
@@ -561,10 +563,65 @@
                             <outlet property="delegate" destination="t0w-vn-CKE" id="FwC-BB-PiY"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="设置" id="WYD-5N-sd5">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="g7g-NU-cc2"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="d9M-bu-2Cr" kind="show" identifier="SettingToOnDemandSegue" id="WQs-51-QCf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYc-8v-oz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2028" y="707"/>
+        </scene>
+        <!--OnDemand Rules-->
+        <scene sceneID="G1C-uv-Dmc">
+            <objects>
+                <tableViewController storyboardIdentifier="OnDemandViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d9M-bu-2Cr" customClass="OnDemandViewController" customModule="VPNSwitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vXs-Fq-e1f">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <sections>
+                            <tableViewSection id="Rjs-xb-FC3">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="250" id="N7B-qA-TLS">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N7B-qA-TLS" id="bRu-yt-0M2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s4q-oA-WZB">
+                                                    <rect key="frame" x="8" y="8" width="359" height="233.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="s4q-oA-WZB" secondAttribute="trailing" constant="8" id="0mX-5L-1Y1"/>
+                                                <constraint firstItem="s4q-oA-WZB" firstAttribute="top" secondItem="bRu-yt-0M2" secondAttribute="top" constant="8" id="bZX-sZ-6Nl"/>
+                                                <constraint firstAttribute="bottom" secondItem="s4q-oA-WZB" secondAttribute="bottom" constant="8" id="hvF-5Y-ulK"/>
+                                                <constraint firstItem="s4q-oA-WZB" firstAttribute="leading" secondItem="bRu-yt-0M2" secondAttribute="leading" constant="8" id="ktD-1W-b53"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="d9M-bu-2Cr" id="Zp5-tm-f6y"/>
+                            <outlet property="delegate" destination="d9M-bu-2Cr" id="Hgk-T8-9wO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="OnDemand Rules" id="8oW-9P-HPw">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="9Xs-sT-erI"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tst-qZ-6pf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2989.5999999999999" y="706.59670164917543"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gv6-iK-HaZ">
