@@ -617,7 +617,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="OnDemand Rules" id="8oW-9P-HPw">
                         <barButtonItem key="backBarButtonItem" title="返回" id="9Xs-sT-erI"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zNR-2N-OBg">
+                            <connections>
+                                <action selector="saveButtonTouchUp:" destination="d9M-bu-2Cr" id="9ye-ea-Ofw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="rulesTextView" destination="s4q-oA-WZB" id="7pX-pi-bE4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tst-qZ-6pf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

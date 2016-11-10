@@ -10,6 +10,8 @@ import UIKit
 
 class OnDemandViewController: UITableViewController {
 
+    @IBOutlet weak var rulesTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,4 +20,7 @@ class OnDemandViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func saveButtonTouchUp(_ sender: Any) {
+    }
+    
 }
