@@ -71,7 +71,6 @@ class VPNListViewController: UITableViewController {
         timer = nil
     }
     
-    
     @IBAction func addVPNButtonTouchUp(_ sender: AnyObject) {
         selectedIndexPath = nil
         performSegue(withIdentifier: "VPNListToEditVPNSegue", sender: sender)

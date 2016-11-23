@@ -88,4 +88,37 @@ class StorageManager {
         }
     }
     
+    public func insertDomainRule(_ url: String) -> DomainRule? {
+        let domainRule = DomainRule()
+        domainRule.uuid = UUID().uuidString
+        domainRule.url = url
+        try! realm.write {
+            realm.add(domainRule)
+        }
+        return domainRule
+    }
+    
+    public func deleteAllDomainRules() -> Void {
+        for domainRule in allDomainRules {
+            deleteDomainRule(domainRule.uuid)
+        }
+    }
+    
+    public func deleteDomainRule(_ uuid: String) -> Void {
+        let vpnAccount = self.domainRule(byUUID: uuid)
+        try! realm.write {
+            realm.delete(vpnAccount!)
+        }
+    }
+    
+    public func domainRule(byUUID uuid: String) -> DomainRule? {
+        return realm.objects(DomainRule.self).filter("uuid = %@", uuid).first
+    }
+    
+    public var allDomainRules: Results<DomainRule> {
+        get {
+            return realm.objects(DomainRule.self).sorted(byProperty: "createdAt", ascending: true)
+        }
+    }
+    
 }

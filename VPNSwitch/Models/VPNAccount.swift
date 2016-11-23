@@ -46,6 +46,7 @@ class VPNAccount: Object {
             }
         }
     }
+    
     var passwordReference: Data? {
         get {
             if let passwordReference = Keychain.passwordDataReference(uuid) {
@@ -54,6 +55,7 @@ class VPNAccount: Object {
             return nil
         }
     }
+    
     var secretKeyReference: Data? {
         get {
             if let secretKeyReference = Keychain.secretKeyDataReference(uuid) {

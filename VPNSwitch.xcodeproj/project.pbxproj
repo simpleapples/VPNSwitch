@@ -29,6 +29,8 @@
 		5A1D3B7C1DAE19B200DE2266 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B551DAE14F900DE2266 /* VPNManager.swift */; };
 		5A1D3B7D1DAE1F2100DE2266 /* VPNAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D3B511DAE14F900DE2266 /* VPNAccount.swift */; };
 		5A1D3B871DAE2A8700DE2266 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */; };
+		5A1FA9921DE5429900B0AC5C /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FA9911DE5429900B0AC5C /* DomainRule.swift */; };
+		5A1FA9931DE54D3400B0AC5C /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FA9911DE5429900B0AC5C /* DomainRule.swift */; };
 		5A56B74A1DAE2CFB0009E85F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */; };
 		5AB3617F1DB6157800B30221 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3617E1DB6157800B30221 /* UIColor+Extension.swift */; };
 		5ADE0F4E1DCDCD4E00E98B93 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE0F4D1DCDCD4E00E98B93 /* UIDevice+Extension.swift */; };
@@ -91,6 +93,7 @@
 		5A1D3B721DAE174800DE2266 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A1D3B7F1DAE239600DE2266 /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
 		5A1D3B861DAE2A8700DE2266 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		5A1FA9911DE5429900B0AC5C /* DomainRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainRule.swift; sourceTree = "<group>"; };
 		5AB3617E1DB6157800B30221 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5ADE0F471DCDC8EE00E98B93 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		5ADE0F481DCDC8EE00E98B93 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -192,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				5A1D3B511DAE14F900DE2266 /* VPNAccount.swift */,
+				5A1FA9911DE5429900B0AC5C /* DomainRule.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -472,6 +476,7 @@
 				5A1D3B611DAE14F900DE2266 /* VPNStatusCell.swift in Sources */,
 				5AB3617F1DB6157800B30221 /* UIColor+Extension.swift in Sources */,
 				5A1D3B5A1DAE14F900DE2266 /* SettingViewController.swift in Sources */,
+				5A1FA9921DE5429900B0AC5C /* DomainRule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +487,7 @@
 				5ADE0F501DCDD1A300E98B93 /* UIColor+Extension.swift in Sources */,
 				5A1D3B7D1DAE1F2100DE2266 /* VPNAccount.swift in Sources */,
 				5ADE0F4F1DCDD1A100E98B93 /* UIDevice+Extension.swift in Sources */,
+				5A1FA9931DE54D3400B0AC5C /* DomainRule.swift in Sources */,
 				5A1D3B7B1DAE19B200DE2266 /* StorageManager.swift in Sources */,
 				5A1D3B6E1DAE174800DE2266 /* TodayViewController.swift in Sources */,
 				5A1D3B7C1DAE19B200DE2266 /* VPNManager.swift in Sources */,
