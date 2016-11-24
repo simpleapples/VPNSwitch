@@ -50,6 +50,9 @@ class OnDemandViewController: UITableViewController {
                 _ = StorageManager.sharedManager.insertDomainRule(domain)
             }
         }
+        if let activedVPN = StorageManager.sharedManager.activedVPN {
+            VPNManager.sharedManager.setupVPNConfiguration(activedVPN)
+        }
     }
     
 }

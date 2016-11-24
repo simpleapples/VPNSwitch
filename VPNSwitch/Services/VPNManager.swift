@@ -12,25 +12,26 @@ import NetworkExtension
 
 class VPNManager {
     
-    static let VPNStatusChange = "VPNStatusChange"
-    static let sharedManager = VPNManager()
-    fileprivate init() {
+    public static let VPNStatusChange = "VPNStatusChange"
+    public static let sharedManager = VPNManager()
+    
+    private init() {
         NEVPNManager.shared().loadFromPreferences { (error: Error?) in
             NotificationCenter.default.addObserver(self, selector: #selector(self.forwardNotification), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
         }
     }
     
-    var status: NEVPNStatus {
+    public var status: NEVPNStatus {
         get {
             return NEVPNManager.shared().connection.status
         }
     }
     
-    @objc fileprivate func forwardNotification() {
+    @objc private func forwardNotification() {
         NotificationCenter.default.post(name: Notification.Name(rawValue: VPNManager.VPNStatusChange), object: nil)
     }
     
-    func setupVPNConfiguration(_ vpnAccount: VPNAccount) {
+    public func setupVPNConfiguration(_ vpnAccount: VPNAccount) {
         var vpnProtocol = NEVPNProtocol()
         
         let ipSecProtocol = NEVPNProtocolIPSec()
@@ -56,18 +57,35 @@ class VPNManager {
         NEVPNManager.shared().localizedDescription = vpnAccount.name
         NEVPNManager.shared().protocolConfiguration = vpnProtocol
         
-        NEVPNManager.shared().onDemandRules = [NEOnDemandRule]()
-        NEVPNManager.shared().isOnDemandEnabled = false
+        let isOnDemand = UserDefaults.standard.bool(forKey: "onDemand")
+        var domains = [String]()
+        for domain in StorageManager.sharedManager.allDomainRules {
+            domains.append(domain.url)
+        }
+        if isOnDemand && domains.count > 0 {
+            let connectionRule = NEEvaluateConnectionRule(
+                matchDomains: domains,
+                andAction: NEEvaluateConnectionRuleAction.connectIfNeeded
+            )
+            let ruleEvaluateConnection = NEOnDemandRuleEvaluateConnection()
+            ruleEvaluateConnection.connectionRules = [connectionRule]
+            
+            NEVPNManager.shared().onDemandRules = [ruleEvaluateConnection]
+            NEVPNManager.shared().isOnDemandEnabled = true
+        } else {
+            NEVPNManager.shared().onDemandRules = [NEOnDemandRule]()
+            NEVPNManager.shared().isOnDemandEnabled = false
+        }
         
         NEVPNManager.shared().isEnabled = true
         NEVPNManager.shared().saveToPreferences(completionHandler: nil)
     }
     
-    func deleteVPNConfigurations() {
+    public func deleteVPNConfigurations() {
         NEVPNManager.shared().removeFromPreferences(completionHandler: nil)
     }
     
-    func startVPNTunnel() {
+    public func startVPNTunnel() {
         do {
             try NEVPNManager.shared().connection.startVPNTunnel()
         } catch let error as NSError {
@@ -75,7 +93,7 @@ class VPNManager {
         }
     }
     
-    func stopVPNTunnel() {
+    public func stopVPNTunnel() {
         NEVPNManager.shared().connection.stopVPNTunnel()
     }
     

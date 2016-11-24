@@ -56,6 +56,15 @@ class EditVPNViewController: UITableViewController {
         let group = groupTextField.text
         let isAlwaysOnline = true
         
+        if (name?.isEmpty ?? true) || (server?.isEmpty ?? true) {
+            let popup = PopupDialog(title: "请填写完成", message: "请填写VPN名称和服务器地址", image: nil, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: true, completion: nil)
+            let confirmButton = DefaultButton(title: "好的") {
+            }
+            popup.addButtons([confirmButton])
+            self.present(popup, animated: true, completion: nil)
+            return
+        }
+        
         if let vpnAccount = vpnAccount {
             _ = StorageManager.sharedManager.updateVPNAccount(vpnAccount.uuid, name: name!, server: server!, account: account!, password: password!, secretKey: secretKey!, group: group!, isAlwaysOnline: isAlwaysOnline)
         } else {

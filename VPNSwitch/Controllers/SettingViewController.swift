@@ -12,10 +12,24 @@ import AcknowList
 
 class SettingViewController: UITableViewController {
     
+    @IBOutlet weak var onDemandSwitch: UISwitch!
+    
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
+        updateInterface()
+    }
+    
+    private func updateInterface() {
+        onDemandSwitch.isOn = UserDefaults.standard.bool(forKey: "onDemand")
     }
 
+    @IBAction private func onDemandSwitchValueChanged(_ sender: Any) {
+        UserDefaults.standard.set(onDemandSwitch.isOn, forKey: "onDemand")
+        if let activedVPN = StorageManager.sharedManager.activedVPN {
+            VPNManager.sharedManager.setupVPNConfiguration(activedVPN)
+        }
+    }
+    
 }
 
 extension SettingViewController {
