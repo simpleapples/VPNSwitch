@@ -8,6 +8,8 @@ pod 'SwiftKeychainWrapper'
 pod 'PlainPing'
 pod 'PopupDialog'
 pod 'AcknowList'
+pod 'Fabric'
+pod 'Crashlytics'
 
 end
 
@@ -16,6 +18,8 @@ target 'TodayExtension' do
 pod 'RealmSwift'
 pod 'SwiftKeychainWrapper'
 pod 'ReachabilitySwift'
+pod 'Fabric'
+pod 'Crashlytics'
 
 end
 

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 import NotificationCenter
 import ReachabilitySwift
 
@@ -18,6 +20,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet private weak var wifiImageView: UIImageView!
     
     private var reachability: Reachability?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        Fabric.with([Answers.self, Crashlytics.self])
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
